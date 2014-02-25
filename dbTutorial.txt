@@ -1,0 +1,5 @@
+http://www.techrepublic.com/blog/smb-technologist/import-and-export-databases-using-phpmyadmin/
+
+Tutorial on exporting and importing a database from 
+	phpMiniAdmin so John does not have to totally recreate 
+	db on his laptop.
