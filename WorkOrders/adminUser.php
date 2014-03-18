@@ -1,17 +1,3 @@
-<?php
-        $id=$_POST['id'];
-        $username="root"; 
-        $password="lininG"; 
-        $database="SENIOR_PROJECT"; 
-        $i=0;
-        
-        mysql_connect("localhost",$username,$password); 
-        @mysql_select_db($database) or die( "Unable to select database"); 
-        $query1="SELECT id, title, dateTime FROM WORK_ORDERS Where userID='$id'"; 
-        $result1=mysql_query($query1); 
-        $num=mysql_numrows($result1);
-        mysql_close(); 
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,7 +13,7 @@
             
             #topsection{
                 background: #EAEAEA;
-                height: 90px; /*Height of top section*/
+                height: 90px;
             }
 
             #topsection h1{
@@ -41,12 +27,12 @@
             }
 
             #contentcolumn{
-                margin-left: 200px; /*Set left margin to LeftColumnWidth*/
+                margin-left: 200px;
             }
 
             #leftcolumn{
                 float: left;
-                width: 200px; /*Width of left column*/
+                width: 300px;
                 height: 800px;
                 margin-left: -100%;
                 background: #EAEAEA;
@@ -68,6 +54,22 @@
             }
         </style>
     </head>
+    
+    <?php
+        $id=$_POST['id'];
+        $username="root"; 
+        $password="lininG"; 
+        $database="SENIOR_PROJECT"; 
+        $i=0;
+        
+        mysql_connect("localhost",$username,$password); 
+        @mysql_select_db($database) or die( "Unable to select database"); 
+        $query1="SELECT id, title, dateTime FROM WORK_ORDERS Where userID='$id'"; 
+        $result1=mysql_query($query1); 
+        $num=mysql_numrows($result1);
+        mysql_close(); 
+        ?>
+    
     <body>
         <div id="maincontainer">
         <div id="topsection">
@@ -89,14 +91,16 @@
             </br>
             <?php $j=0;while ($j < $num) {$f1=mysql_result($result1,$i,"title");
             $f2=mysql_result($result1,$i,"dateTime");?>
-            <tr>
-            <td>
-            <font face="Arial, Helvetica, sans-serif"><?php echo $f1; ?></font>
-            </td>
-            <td>
-            <font face="Arial, Helvetica, sans-serif"><?php echo $f2; ?></font>
-            </td>
-            </tr>
+            <table>
+                <tr>
+                    <td>
+                        <font face="Arial, Helvetica, sans-serif"><?php echo $f1; ?></font>
+                    </td>
+                    <td>
+                        <font face="Arial, Helvetica, sans-serif"><?php echo $f2; ?></font>
+                    </td>
+                </tr>
+            </table>
             <?php $j++;}?>
            
         </div>

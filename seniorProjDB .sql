@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 18, 2014 at 06:35 PM
+-- Generation Time: Mar 18, 2014 at 11:08 PM
 -- Server version: 5.1.66
 -- PHP Version: 5.3.3-7+squeeze16
 
@@ -40,8 +40,6 @@ CREATE TABLE IF NOT EXISTS `ADMIN` (
 
 INSERT INTO `ADMIN` (`id`, `staffID`, `buildingID`, `floorID`, `roomID`) VALUES
 (2, 471947, 0, 0, 0),
-(6, 480675, 0, 0, 0),
-(7, 241598, 0, 0, 0),
 (14, 731052, 0, 0, 0),
 (15, 827250, 0, 0, 0),
 (17, 295399, 0, 0, 0),
@@ -115,22 +113,67 @@ CREATE TABLE IF NOT EXISTS `FLOOR` (
   `floorID` varchar(15) NOT NULL,
   `floorImage` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=64 ;
 
 --
 -- Dumping data for table `FLOOR`
 --
 
 INSERT INTO `FLOOR` (`id`, `buildingID`, `floorID`, `floorImage`) VALUES
-(1, 13, '1', ''),
-(2, 13, '2', ''),
-(3, 13, '3', ''),
-(4, 13, '4', ''),
-(5, 12, 'basement', ''),
-(6, 12, '1', ''),
-(7, 12, '2', ''),
-(8, 12, '3', ''),
-(9, 12, '4', '');
+(10, 2, '1', ''),
+(11, 2, '2', ''),
+(12, 2, '3', ''),
+(13, 2, '4', ''),
+(14, 9, '1101A:basement', ''),
+(15, 9, '1101A:lounge', ''),
+(16, 9, '1101A:2', ''),
+(17, 9, '1101B:basement', ''),
+(18, 9, '1101B:lounge', ''),
+(19, 9, '1101B:2', ''),
+(20, 9, '1101C:basement', ''),
+(21, 9, '1101C:lounge', ''),
+(22, 9, '1101C:2', ''),
+(23, 9, '1105A:basement', ''),
+(24, 9, '1105A:lounge', ''),
+(25, 9, '1105A:2', ''),
+(26, 9, '1105B:basement', ''),
+(27, 9, '1105B:lounge', ''),
+(28, 9, '1105B:2', ''),
+(29, 9, '1105C:basement', ''),
+(30, 9, '1105C:lounge', ''),
+(31, 9, '1105C:2', ''),
+(32, 3, '3', ''),
+(33, 3, '4', ''),
+(34, 3, '3', ''),
+(35, 4, '1', ''),
+(36, 4, '2', ''),
+(37, 4, '3', ''),
+(38, 4, '4', ''),
+(39, 5, '1', ''),
+(40, 5, '2', ''),
+(41, 5, '3', ''),
+(42, 7, '1', ''),
+(43, 7, '2', ''),
+(44, 7, '3', ''),
+(45, 8, '1', ''),
+(46, 8, '2', ''),
+(47, 8, '3', ''),
+(48, 8, '4', ''),
+(49, 10, '1', ''),
+(50, 10, '2', ''),
+(51, 10, '3', ''),
+(52, 11, '1', ''),
+(53, 11, '2', ''),
+(54, 11, '3', ''),
+(55, 11, '4', ''),
+(56, 12, '1', ''),
+(57, 12, '2', ''),
+(58, 12, '3', ''),
+(59, 12, '4', ''),
+(60, 13, '1', ''),
+(61, 13, '2', ''),
+(62, 13, '3', ''),
+(63, 13, '4', '');
 
 -- --------------------------------------------------------
 
@@ -160,11 +203,12 @@ INSERT INTO `OPERATIONS` (`id`, `staffID`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `ROOM` (
-  `id` int(1) NOT NULL,
+  `id` int(1) NOT NULL AUTO_INCREMENT,
   `buildingID` int(1) NOT NULL,
+  `floorID` varchar(255) NOT NULL,
   `roomImage` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `ROOM`
@@ -203,7 +247,9 @@ INSERT INTO `STUDENT` (`id`, `studentID`, `buildingID`, `roomID`) VALUES
 (12, 453286, 0, 0),
 (18, 484158, 0, 0),
 (20, 757542, 0, 0),
-(28, 787548, 0, 0);
+(28, 787548, 0, 0),
+(7, 241598, 9, 0),
+(6, 480675, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -262,7 +308,7 @@ INSERT INTO `USER` (`id`, `name`, `emailAddress`, `password`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `WORK_ORDERS` (
-  `id` int(1) NOT NULL,
+  `id` int(1) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `dateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -270,15 +316,18 @@ CREATE TABLE IF NOT EXISTS `WORK_ORDERS` (
   `buildingID` int(1) NOT NULL,
   `floorID` int(1) NOT NULL,
   `roomID` int(1) NOT NULL,
+  `zone` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `WORK_ORDERS`
 --
 
-INSERT INTO `WORK_ORDERS` (`id`, `title`, `description`, `dateTime`, `userID`, `buildingID`, `floorID`, `roomID`) VALUES
-(0, 'chair', '//sample ', '2014-03-18 02:14:53', 6, 0, 0, 0),
-(2, 'desk', '//sample ', '2014-03-18 02:14:53', 6, 0, 0, 0),
-(3, 'dresser', '//sample ', '2014-03-18 02:14:53', 7, 0, 0, 0),
-(4, 'sink', '//sample ', '2014-03-18 02:14:53', 7, 0, 0, 0);
+INSERT INTO `WORK_ORDERS` (`id`, `title`, `description`, `dateTime`, `userID`, `buildingID`, `floorID`, `roomID`, `zone`) VALUES
+(1, 'chair', '//sample ', '2014-03-18 02:14:53', 6, 0, 0, 0, 0),
+(2, 'desk', '//sample ', '2014-03-18 02:14:53', 6, 0, 0, 0, 0),
+(3, 'dresser', '//sample ', '2014-03-18 02:14:53', 7, 0, 0, 0, 0),
+(4, 'sink', '//sample ', '2014-03-18 02:14:53', 7, 0, 0, 0, 0),
+(5, 'desk', 'front desk left desk leg broken', '2014-03-18 22:28:58', 6, 1, 0, 0, 1),
+(9, 'closet', 'door broke off', '2014-03-18 22:50:54', 7, 9, 0, 0, 1);

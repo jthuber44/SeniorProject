@@ -1,8 +1,6 @@
-
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
         <title>Benedictine College Work Orders</title>
         <style type="text/css">
             body{
@@ -15,7 +13,7 @@
             em{color: red;}
             #topsection{
                 background: #EAEAEA;
-                height: 90px; /*Height of top section*/
+                height: 90px; 
             }
             
             #topsection h1{
@@ -24,12 +22,13 @@
             }
 
             #contentcolumn{
-                margin-left: 200px; /*Set left margin to LeftColumnWidth*/
+                margin-left: 200px; 
             }
 
             #leftcolumn{
                 float: left;
-                width: 200px; /*Width of left column*/
+                width: 300px; 
+                height: 800px;
                 margin-left: -100%;
                 background: #C8FC98;
             }
@@ -67,14 +66,14 @@
                     <center>
                         <b>Please Login</b>
                     <table style="width:300px">
-                    <tr>
-                      <td>Email:</td>
-                      <td><input type="text" size="30" name="email"/> <br></td>
-                      </tr>
-                    <tr>
-                      <td>Password:</td>
-                      <td><input type="password" size="30" name="password"/><br></td>
-                    </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td><input type="text" size="30" name="email"/> <br></td>
+                        </tr>
+                        <tr>
+                          <td>Password:</td>
+                          <td><input type="password" size="30" name="password"/><br></td>
+                        </tr>
                     </table>
                     <input type="submit" value="Login">
                     </center>

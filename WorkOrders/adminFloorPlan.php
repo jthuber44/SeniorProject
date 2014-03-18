@@ -13,7 +13,7 @@
             
             #topsection{
                 background: #EAEAEA;
-                height: 90px; /*Height of top section*/
+                height: 90px; 
             }
 
             #topsection h1{
@@ -27,12 +27,13 @@
             }
 
             #contentcolumn{
-                margin-left: 200px; /*Set left margin to LeftColumnWidth*/
+                margin-left: 200px;
             }
 
             #leftcolumn{
                 float: left;
-                width: 200px; /*Width of left column*/
+                width: 300px;
+                height: 800px;
                 margin-left: -100%;
                 background: #EAEAEA;
             }
@@ -72,30 +73,6 @@
         </div>
         <div id="leftcolumn">
             <b>Previous Work Orders:</b>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-           
         </div>
         <div id="footer">Work Order Senior Project 2014</div>
     </body>
