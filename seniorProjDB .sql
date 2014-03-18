@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 26, 2014 at 01:12 AM
+-- Generation Time: Mar 18, 2014 at 06:35 PM
 -- Server version: 5.1.66
 -- PHP Version: 5.3.3-7+squeeze16
 
@@ -110,17 +110,27 @@ CREATE TABLE IF NOT EXISTS `EMAIL` (
 --
 
 CREATE TABLE IF NOT EXISTS `FLOOR` (
-  `id` int(1) NOT NULL,
+  `id` int(1) NOT NULL AUTO_INCREMENT,
   `buildingID` int(1) NOT NULL,
-  `floorID` int(1) NOT NULL,
+  `floorID` varchar(15) NOT NULL,
   `floorImage` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `FLOOR`
 --
 
+INSERT INTO `FLOOR` (`id`, `buildingID`, `floorID`, `floorImage`) VALUES
+(1, 13, '1', ''),
+(2, 13, '2', ''),
+(3, 13, '3', ''),
+(4, 13, '4', ''),
+(5, 12, 'basement', ''),
+(6, 12, '1', ''),
+(7, 12, '2', ''),
+(8, 12, '3', ''),
+(9, 12, '4', '');
 
 -- --------------------------------------------------------
 
@@ -214,36 +224,36 @@ CREATE TABLE IF NOT EXISTS `USER` (
 --
 
 INSERT INTO `USER` (`id`, `name`, `emailAddress`, `password`) VALUES
-(1, 'Issac Nicoletti', 'Nico@benedictine.edu', ''),
-(2, 'Susan Garst', 'Gars@benedictine.edu', ''),
-(3, 'Brandon Capers', 'Cape@benedictine.edu', ''),
-(4, 'Bob Karney', 'Karney@benedictine.edu', ''),
-(5, 'Vickie Dilbeck', 'Dilb@benedictine.edu', ''),
-(6, 'John Huber', 'Hube@benedictine.edu', ''),
-(7, 'Kelsey Dorn', 'dorn1480@benedictine.edu', ''),
-(8, 'Ty Steiner', 'Stei@benedictine.edu', ''),
-(9, 'Rolf Sumbo', 'Sumb@benedictine.edu', ''),
-(10, 'Juliet Gilbert', 'Gilb@benedictine.edu', ''),
-(11, 'Justin Collins', 'Coll@benedictine.edu', ''),
-(12, 'Nicholas James', 'Jame@benedictine.edu', ''),
-(13, 'Norma Howard', 'Howa@benedictine.edu', ''),
-(14, 'Willie Rodriguez', 'Rodr@benedictine.edu', ''),
-(15, 'Jane Parker', 'Park@benedictine.edu', ''),
-(16, 'Donna Noble', 'Nobl@benedictine.edu', ''),
-(17, 'Eric Sanchez', 'Sanc@benedictine.edu', ''),
-(18, 'Amy Rivera', 'Rive@benedictine.edu', ''),
-(19, 'Shirley Cox', 'Cox@benedictine.edu', ''),
-(20, 'Heather Jones', 'Jone@benedictine.edu', ''),
-(21, 'Judy Perry', 'Perr@benedictine.edu', ''),
-(22, 'Robert Roberts', 'Robe@benedictine.edu', ''),
-(23, 'Jason Kelly', 'Kell@benedictine.edu', ''),
-(24, 'Christopher Johnson', 'John@benedictine.edu', ''),
-(25, 'Jennifer Baker', 'Bake@benedictine.edu', ''),
-(26, 'Lori Bryant', 'Brya@benedictine.edu', ''),
-(27, 'Joan Alexander', 'Alex@benedictine.edu', ''),
-(28, 'Roy Hill', 'Hill@benedictine.edu', ''),
-(29, 'Christina Lewis', 'Lewi@benedictine.edu', ''),
-(30, 'George Stewart', 'Stew@benedictine.edu', '');
+(1, 'Issac Nicoletti', 'Nico@benedictine.edu', 'test1'),
+(2, 'Susan Garst', 'Gars@benedictine.edu', 'test2'),
+(3, 'Brandon Capers', 'Cape@benedictine.edu', 'test3'),
+(4, 'Bob Karney', 'Karney@benedictine.edu', 'test4'),
+(5, 'Vickie Dilbeck', 'Dilb@benedictine.edu', 'test5'),
+(6, 'John Huber', 'Hube1208@ravens.benedictine.edu', 'test'),
+(7, 'Kelsey Dorn', 'Dorn1480@ravens.benedictine.edu', 'test'),
+(8, 'Ty Steiner', 'Stei@benedictine.edu', 'test8'),
+(9, 'Rolf Sumbo', 'Sumb@benedictine.edu', 'test9'),
+(10, 'Juliet Gilbert', 'Gilb@benedictine.edu', 'test10'),
+(11, 'Justin Collins', 'Coll@benedictine.edu', 'test11'),
+(12, 'Nicholas James', 'Jame@benedictine.edu', 'test12'),
+(13, 'Norma Howard', 'Howa@benedictine.edu', 'test13'),
+(14, 'Willie Rodriguez', 'Rodr@benedictine.edu', 'test14'),
+(15, 'Jane Parker', 'Park@benedictine.edu', 'test15'),
+(16, 'Donna Noble', 'Nobl@benedictine.edu', 'test16'),
+(17, 'Eric Sanchez', 'Sanc@benedictine.edu', 'test17'),
+(18, 'Amy Rivera', 'Rive@benedictine.edu', 'test18'),
+(19, 'Shirley Cox', 'Cox@benedictine.edu', 'test19'),
+(20, 'Heather Jones', 'Jone@benedictine.edu', 'test20'),
+(21, 'Judy Perry', 'Perr@benedictine.edu', 'test21'),
+(22, 'Robert Roberts', 'Robe@benedictine.edu', 'test22'),
+(23, 'Jason Kelly', 'Kell@benedictine.edu', 'test23'),
+(24, 'Christopher Johnson', 'John@benedictine.edu', 'test24'),
+(25, 'Jennifer Baker', 'Bake@benedictine.edu', 'test25'),
+(26, 'Lori Bryant', 'Brya@benedictine.edu', 'test26'),
+(27, 'Joan Alexander', 'Alex@benedictine.edu', 'test27'),
+(28, 'Roy Hill', 'Hill@benedictine.edu', 'test28'),
+(29, 'Christina Lewis', 'Lewi@benedictine.edu', 'test29'),
+(30, 'George Stewart', 'Stew@benedictine.edu', 'test30');
 
 -- --------------------------------------------------------
 
@@ -267,3 +277,8 @@ CREATE TABLE IF NOT EXISTS `WORK_ORDERS` (
 -- Dumping data for table `WORK_ORDERS`
 --
 
+INSERT INTO `WORK_ORDERS` (`id`, `title`, `description`, `dateTime`, `userID`, `buildingID`, `floorID`, `roomID`) VALUES
+(0, 'chair', '//sample ', '2014-03-18 02:14:53', 6, 0, 0, 0),
+(2, 'desk', '//sample ', '2014-03-18 02:14:53', 6, 0, 0, 0),
+(3, 'dresser', '//sample ', '2014-03-18 02:14:53', 7, 0, 0, 0),
+(4, 'sink', '//sample ', '2014-03-18 02:14:53', 7, 0, 0, 0);
