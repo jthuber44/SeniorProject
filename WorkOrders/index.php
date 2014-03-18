@@ -63,7 +63,7 @@
             </div>
                 <?php
                 ?>
-                <form method="post" action="MainPage.php">
+                <form method="post" action="sortUser.php">
                     <center>
                         <b>Please Login</b>
                     <table style="width:300px">
