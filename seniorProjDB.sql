@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 18, 2014 at 11:08 PM
+-- Generation Time: Mar 19, 2014 at 04:00 AM
 -- Server version: 5.1.66
 -- PHP Version: 5.3.3-7+squeeze16
 
@@ -39,17 +39,17 @@ CREATE TABLE IF NOT EXISTS `ADMIN` (
 --
 
 INSERT INTO `ADMIN` (`id`, `staffID`, `buildingID`, `floorID`, `roomID`) VALUES
-(2, 471947, 0, 0, 0),
-(14, 731052, 0, 0, 0),
-(15, 827250, 0, 0, 0),
-(17, 295399, 0, 0, 0),
-(23, 337604, 0, 0, 0),
-(25, 426971, 0, 0, 0),
-(27, 292865, 0, 0, 0),
-(30, 289228, 0, 0, 0),
-(13, 795819, 0, 0, 0),
-(22, 883536, 0, 0, 0),
-(26, 885520, 0, 0, 0);
+(2, 471947, 2, 0, 0),
+(14, 731052, 3, 0, 0),
+(15, 827250, 4, 0, 0),
+(17, 295399, 5, 0, 0),
+(23, 337604, 6, 0, 0),
+(25, 426971, 7, 0, 0),
+(27, 292865, 8, 0, 0),
+(30, 289228, 9, 0, 0),
+(13, 795819, 10, 0, 0),
+(22, 883536, 11, 0, 0),
+(26, 885520, 12, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -208,12 +208,15 @@ CREATE TABLE IF NOT EXISTS `ROOM` (
   `floorID` varchar(255) NOT NULL,
   `roomImage` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `ROOM`
 --
 
+INSERT INTO `ROOM` (`id`, `buildingID`, `floorID`, `roomImage`) VALUES
+(1, 2, '10', ''),
+(2, 2, '11', '');
 
 -- --------------------------------------------------------
 

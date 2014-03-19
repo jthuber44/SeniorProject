@@ -54,13 +54,44 @@
             }
         </style>
     </head>
+    
+     <?php
+        $id=$_POST['id'];
+        $name=$_POST['name'];
+        $buildingID=$_POST['buildingID'];
+        $roomID=$_POST['roomID'];
+        $username="root"; 
+        $password="lininG"; 
+        $database="SENIOR_PROJECT"; 
+        $i=0;
+        
+        mysql_connect("localhost",$username,$password); 
+        @mysql_select_db($database) or die( "Unable to select database"); 
+        $query1="SELECT id, title, dateTime FROM WORK_ORDERS Where userID='$id'"; 
+        $result1=mysql_query($query1); 
+        $num=mysql_numrows($result1);
+        
+        $query2="SELECT name FROM BUILDING Where id='$buildingID'"; 
+        $result2=mysql_query($query2);  
+        
+        $buildingName=mysql_result($result2,$i,"name");
+        mysql_close(); 
+        ?>
+    
     <body>
         <div id="maincontainer">
         <div id="topsection">
-            <table style="width:1050px">
+            <table style="width:1200px">
                 <tr>
                   <td><img src="logo.png" alt="Benedictine College"></td>
-                  <td><h1>Admin Name</h1></td>
+                  <td>
+                      <h1><?php echo "$name, $buildingName" ?></h1>
+                  </td>
+                  <td>
+                      <form method="post" action="index.php">
+                          <input type="submit" value="LogOut">
+                    </form>
+                  </td>
                 </tr>
             </table>
             <h1></div></div>
@@ -72,7 +103,22 @@
         </div>
         </div>
         <div id="leftcolumn">
-            <b>Previous Work Orders:</b>
+            <<b>Previous Work Orders:</b>
+            </br>
+            <?php $j=0;while ($j < $num) 
+                {$f1=mysql_result($result1,$j,"title");
+                $f2=mysql_result($result1,$j,"dateTime");?>
+            <table>
+                <tr>
+                    <td>
+                        <font face="Arial, Helvetica, sans-serif"><?php echo $f1; ?></font>
+                    </td>
+                    <td>
+                        <font face="Arial, Helvetica, sans-serif"><?php echo $f2; ?></font>
+                    </td>
+                </tr>
+            </table>
+            <?php $j++;} ?>
         </div>
         <div id="footer">Work Order Senior Project 2014</div>
     </body>

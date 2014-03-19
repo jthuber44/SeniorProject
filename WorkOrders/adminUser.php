@@ -65,40 +65,42 @@
         $database="SENIOR_PROJECT"; 
         $i=0;
         
-        
         mysql_connect("localhost",$username,$password); 
         @mysql_select_db($database) or die( "Unable to select database"); 
         $query1="SELECT id, title, dateTime FROM WORK_ORDERS Where userID='$id'"; 
         $result1=mysql_query($query1); 
         $num=mysql_numrows($result1);
-        mysql_close(); 
         
-        mysql_connect("localhost",$username,$password); 
-        @mysql_select_db($database) or die( "Unable to select database"); 
         $query2="SELECT name FROM BUILDING Where id='$buildingID'"; 
         $result2=mysql_query($query2); 
-        mysql_close(); 
         
-
         
-        mysql_connect("localhost",$username,$password); 
-        @mysql_select_db($database) or die( "Unable to select database"); 
         $query3="SELECT id, floorID FROM FLOOR Where buildingID='$buildingID'"; 
         $result3=mysql_query($query3); 
         $num3=mysql_numrows($result3);
+        
+        $query4="SELECT id, roomID FROM ROOM Where buildingID='$buildingID'"; 
+        $result4=mysql_query($query4); 
+        $num4=mysql_numrows($result4);
+
         mysql_close(); 
+        
+        $buildingName=mysql_result($result2,$i,"name");
         
         ?>
     
     <body>
         <div id="maincontainer">
         <div id="topsection">
-            <table style="width:1050px">
+            <table style="width:1200px">
                 <tr>
                   <td><img src="logo.png" alt="Benedictine College"></td>
-                  <td><h1><?php echo "$name" ?></h1>
+                  <td>
+                      <h1><?php echo "$name, $buildingName" ?></h1>
+                  </td>
+                  <td>
                       <form method="post" action="index.php">
-                        <input type="submit" value="LogOut">
+                          <input type="submit" value="LogOut">
                     </form>
                   </td>
                 </tr>
@@ -114,42 +116,38 @@
                  <input type="text" value="<?php echo "$name"?>" name="name" hidden="true">
                  <input type="text" value="<?php echo "$id"?>" name="id" hidden="true">
                  <input type="text" value="1" name="admin" hidden="true">
-                 <select name="floorID"> 
-
-                    <?php 
-
-                        $k=0; 
-                        while ($k < $num3) { 
-                                    $floorid=mysql_result($result3,$i,"floorID"); 
-                            echo "<option value='$floorid'>$floorid"; 
-                            $k++; 
-                        } 
-
-                    ?> 
-
-                 </select> 
-
-
-                    <center>
-                    <table style="width:400px">
-                        <tr>
-                          <td><input type="submit" value="1" name="box"> </td>
-                          <td><input type="submit" value="2" name="box"> </td>
-                        </tr>
-                        <tr>
-                          <td><input type="submit" value="3" name="box"></td>
-                          <td><input type="submit" value="4" name="box"></td>
-                        </tr>
-                    </table>
-                    </center>
-                </form>
+                 <select name="floorID">
+                     
+                     <?php
+                     $k=0;
+                     while ($k < $num3) {
+                         $floorid=mysql_result($result3,$k,"floorID"); 
+                         echo "<option value='$floorid'>$floorid"; 
+                         $k++;
+                      } 
+                      ?> 
+                 </select>
+                 <br>
+                 <b>Select Room:</b>
+                 <select name="roomID">
+                     <?php
+                     $m=0;
+                     while ($m < $num4) {
+                         $roomid=mysql_result($result4,$m,"roomID"); 
+                         echo "<option value='$roomid'>$roomid"; 
+                         $k++;
+                      } 
+                      ?> 
+                 </select>
+            
         </div>
         </div>
         <div id="leftcolumn">
             <b>Previous Work Orders:</b>
             </br>
-            <?php $j=0;while ($j < $num) {$f1=mysql_result($result1,$i,"title");
-            $f2=mysql_result($result1,$i,"dateTime");?>
+            <?php $j=0;while ($j < $num) 
+                {$f1=mysql_result($result1,$j,"title");
+                $f2=mysql_result($result1,$j,"dateTime");?>
             <table>
                 <tr>
                     <td>

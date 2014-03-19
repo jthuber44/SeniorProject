@@ -83,12 +83,15 @@
     <body>
         <div id="maincontainer">
         <div id="topsection">
-            <table style="width:1050px">
+            <table style="width:1200px">
                 <tr>
                   <td><img src="logo.png" alt="Benedictine College"></td>
-                  <td><h1><?php echo "$name, $buildingName, Room #$roomID" ?></h1>
-                    <form method="post" action="index.php">
-                        <input type="submit" value="LogOut">
+                  <td>
+                      <h1><?php echo "$name, $buildingName, Room #$roomID" ?></h1>
+                  </td>
+                  <td>
+                      <form method="post" action="index.php">
+                          <input type="submit" value="LogOut">
                     </form>
                   </td>
                 </tr>
