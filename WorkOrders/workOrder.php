@@ -57,7 +57,7 @@
     $floorID=$_POST['floorID'];
     $id=$_POST['id'];
     $name=$_POST['name'];
-    $buildingName=$_POST['name'];
+    $admin=$_POST['admin'];
     ?>
     
     <body>
@@ -66,7 +66,7 @@
             <table style="width:1050px">
                 <tr>
                   <td><img src="logo.png" alt="Benedictine College"></td>
-                  <td><h1><?php echo "$name, $buildingName, Room #$roomID" ?></h1></td>
+                  <td><h1><?php echo "$name" ?></h1></td>
                 </tr>
             </table>
             <h1></div></div>
@@ -92,30 +92,14 @@
                     <input type="text" value="<?php echo"$floorID"?>" name="floorID" hidden="true"/>
                     <input type="text" value="<?php echo"$id"?>" name="id" hidden="true"/>
                     <input type="text" value="<?php echo"$name"?>" name="name" hidden="true"/>
+                    <input type="text" value="<?php echo"$admin"?>" name="admin" hidden="true"/>
                     <input type="submit" value="Insert New WorkOrder">
                     </center>
                 </form>
         </div>
         </div>
         
-        <div id="leftcolumn">
-            <b>Previous Work Orders:</b>
-            <br>
-    
-            <?php $j=0;while ($j < $num) 
-                {$f1=mysql_result($result1,$j,"title");
-                $f2=mysql_result($result1,$j,"dateTime");?>
-            <table>
-                <tr>
-                    <td>
-                        <font face="Arial, Helvetica, sans-serif"><?php echo $f1; ?></font>
-                    </td>
-                    <td>
-                        <font face="Arial, Helvetica, sans-serif"><?php echo $f2; ?></font>
-                    </td>
-                </tr>
-            </table>
-            <?php $j++;}?>
+        
         <div id="footer">Work Order Senior Project 2014</div>
     </body>
 </html>

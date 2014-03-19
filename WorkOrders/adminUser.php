@@ -27,7 +27,7 @@
             }
 
             #contentcolumn{
-                margin-left: 200px;
+                margin-left: 300px;
             }
 
             #leftcolumn{
@@ -57,10 +57,14 @@
     
     <?php
         $id=$_POST['id'];
+        $name=$_POST['name'];
+        $buildingID=$_POST['buildingID'];
+        $roomID=$_POST['roomID'];
         $username="root"; 
         $password="lininG"; 
         $database="SENIOR_PROJECT"; 
         $i=0;
+        
         
         mysql_connect("localhost",$username,$password); 
         @mysql_select_db($database) or die( "Unable to select database"); 
@@ -68,6 +72,22 @@
         $result1=mysql_query($query1); 
         $num=mysql_numrows($result1);
         mysql_close(); 
+        
+        mysql_connect("localhost",$username,$password); 
+        @mysql_select_db($database) or die( "Unable to select database"); 
+        $query2="SELECT name FROM BUILDING Where id='$buildingID'"; 
+        $result2=mysql_query($query2); 
+        mysql_close(); 
+        
+
+        
+        mysql_connect("localhost",$username,$password); 
+        @mysql_select_db($database) or die( "Unable to select database"); 
+        $query3="SELECT id, floorID FROM FLOOR Where buildingID='$buildingID'"; 
+        $result3=mysql_query($query3); 
+        $num3=mysql_numrows($result3);
+        mysql_close(); 
+        
         ?>
     
     <body>
@@ -76,14 +96,53 @@
             <table style="width:1050px">
                 <tr>
                   <td><img src="logo.png" alt="Benedictine College"></td>
-                  <td><h1>Admin Name</h1></td>
+                  <td><h1><?php echo "$name" ?></h1>
+                      <form method="post" action="index.php">
+                        <input type="submit" value="LogOut">
+                    </form>
+                  </td>
                 </tr>
             </table>
+            
             <h1></div></div>
         <div id="contentwrapper">
         <div id="contentcolumn">
-            <b>Select Location:</b>
-            Drop down menu here to chose a floor, room, etc.
+            <b>Select Floor:</b>
+                 <form method="post" action="workOrder.php">
+                 <input type="text" value="<?php echo "$buildingID"?>" name="buildingID" hidden="true">
+                 <input type="text" value="<?php echo "$roomID"?>" name="roomID" hidden="true">
+                 <input type="text" value="<?php echo "$name"?>" name="name" hidden="true">
+                 <input type="text" value="<?php echo "$id"?>" name="id" hidden="true">
+                 <input type="text" value="1" name="admin" hidden="true">
+                 <select name="floorID"> 
+
+                    <?php 
+
+                        $k=0; 
+                        while ($k < $num3) { 
+                                    $floorid=mysql_result($result3,$i,"floorID"); 
+                            echo "<option value='$floorid'>$floorid"; 
+                            $k++; 
+                        } 
+
+                    ?> 
+
+                 </select> 
+
+
+                    <center>
+                    <table style="width:400px">
+                        <tr>
+                          <td><input type="submit" value="1" name="box"> </td>
+                          <td><input type="submit" value="2" name="box"> </td>
+                        </tr>
+                        <tr>
+                          <td><input type="submit" value="3" name="box"></td>
+                          <td><input type="submit" value="4" name="box"></td>
+                        </tr>
+                    </table>
+                    </center>
+                </form>
         </div>
         </div>
         <div id="leftcolumn">
@@ -101,7 +160,7 @@
                     </td>
                 </tr>
             </table>
-            <?php $j++;}?>
+            <?php $j++;} ?>
            
         </div>
         <div id="footer">Work Order Senior Project 2014</div>

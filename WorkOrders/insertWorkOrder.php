@@ -7,6 +7,7 @@
         $floorID=$_POST['floorID'];
         $id=$_POST['id'];
         $name=$_POST['name'];
+        $admin=$_POST['admin'];
         
         $username="root"; 
         $password="lininG"; 
@@ -18,17 +19,33 @@
         $result=mysql_query($query); 
         mysql_close(); 
         
-        echo"
-             <form method='post' id='student' action='studentUser.php'>
-             <input type='number' name='id' value='$id'/>
-             <input type='text' name='name' value='$name'/>
-             <input type='number' name='buildingID' value='$buildingID'/>
-             <input type='number' name='roomID' value='$roomID'/>
-             </form>
-             <script type='text/javascript'> 
-             document.getElementById('student').submit();
-             </script>         
-        ";
-
+        if($admin==0)
+            {
+                echo"
+                     <form method='post' id='student' action='studentUser.php'>
+                     <input type='number' name='id' value='$id' hidden='true'/>
+                     <input type='text' name='name' value='$name' hidden='true'/>
+                     <input type='number' name='buildingID' value='$buildingID' hidden='true'/>
+                     <input type='number' name='roomID' value='$roomID' hidden='true'/>
+                     </form>
+                     <script type='text/javascript'> 
+                     document.getElementById('student').submit();
+                     </script>         
+                ";
+            }
+        if($admin==1)
+        {
+                echo"
+                     <form method='post' id='admin' action='adminUser.php'>
+                     <input type='number' name='id' value='$id' hidden='true'/>
+                     <input type='text' name='name' value='$name' hidden='true'/>
+                     <input type='number' name='buildingID' value='$buildingID' hidden='true'/>
+                     <input type='number' name='roomID' value='$roomID' hidden='true'/>
+                     </form>
+                     <script type='text/javascript'> 
+                     document.getElementById('admin').submit();
+                     </script>         
+                ";            
+        }
 ?>
 

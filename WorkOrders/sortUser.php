@@ -36,6 +36,7 @@
                 mysql_close(); 
                 $buildingID=mysql_result($result2,$i,"buildingID");
                 $roomID=mysql_result($result2,$i,"roomID");
+                if($num2==1){
                 echo"
                     <form method='post' id='student' action='studentUser.php'>
                     <input type='number' name='id' value='$id'/>
@@ -47,19 +48,26 @@
                     document.getElementById('student').submit();
                     </script>
                 ";
-
+                }
                 if($num2==0)
                 {
                     mysql_connect("localhost",$username,$password); 
                     @mysql_select_db($database) or die( "Unable to select database"); 
-                    $query3="SELECT buildingID, floorID, roomID FROM Admin Where id='$id'"; 
+                    $query3="SELECT buildingID, floorID, roomID FROM ADMIN Where id='$id'"; 
                     $result3=mysql_query($query3); 
                     $num3=mysql_numrows($result3); 
                     mysql_close(); 
                     
+                    $buildingIDadmin=mysql_result($result3,$i,"buildingID");
+                    $roomIDadmin=mysql_result($result3,$i,"roomID");
+                    $floorIDadmin=mysql_result($result3,$i,"floorID");
                     echo"
                     <form method='post' id='admin' action='adminUser.php'>
                     <input type='text' name='id' value='$id'/>
+                    <input type='text' name='name' value='$name'/>
+                    <input type='number' name='buildingID' value='$buildingIDadmin'/>
+                    <input type='number' name='roomID' value='$roomIDadmin'/>
+                    <input type='number' name='floorID' value='$floorIDadmin'/>
                     </form>
                     <script type='text/javascript'>
                     document.getElementById('admin').submit();

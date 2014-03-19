@@ -86,7 +86,11 @@
             <table style="width:1050px">
                 <tr>
                   <td><img src="logo.png" alt="Benedictine College"></td>
-                  <td><h1><?php echo "$name, $buildingName, Room #$roomID" ?></h1></td>
+                  <td><h1><?php echo "$name, $buildingName, Room #$roomID" ?></h1>
+                    <form method="post" action="index.php">
+                        <input type="submit" value="LogOut">
+                    </form>
+                  </td>
                 </tr>
             </table>
             <h1></div></div>
@@ -98,6 +102,7 @@
                  <input type="text" value="<?php echo "$roomID"?>" name="roomID" hidden="true">
                  <input type="text" value="<?php echo "$name"?>" name="name" hidden="true">
                  <input type="text" value="<?php echo "$id"?>" name="id" hidden="true">
+                 <input type="text" value="0" name="admin" hidden="true">
                  <input type="text" value="0" name="floorID" hidden="true">
                     <center>
                     <table style="width:400px">
