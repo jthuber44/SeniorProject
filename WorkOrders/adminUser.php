@@ -79,7 +79,7 @@
         $result3=mysql_query($query3); 
         $num3=mysql_numrows($result3);
         
-        $query4="SELECT id, roomID FROM ROOM Where buildingID='$buildingID'"; 
+        $query4="SELECT id FROM ROOM Where buildingID='$buildingID'"; 
         $result4=mysql_query($query4); 
         $num4=mysql_numrows($result4);
 
@@ -112,7 +112,6 @@
             <b>Select Floor:</b>
                  <form method="post" action="workOrder.php">
                  <input type="text" value="<?php echo "$buildingID"?>" name="buildingID" hidden="true">
-                 <input type="text" value="<?php echo "$roomID"?>" name="roomID" hidden="true">
                  <input type="text" value="<?php echo "$name"?>" name="name" hidden="true">
                  <input type="text" value="<?php echo "$id"?>" name="id" hidden="true">
                  <input type="text" value="1" name="admin" hidden="true">
@@ -127,19 +126,36 @@
                       } 
                       ?> 
                  </select>
+                 <button type="button" value="<?php echo"$floorid"?>">Select Floor</button>
+                 
+                 <script>
+                  // var button = document.getElementById('button'); // Assumes element with id='button'
+
+                    //button.onclick = function() {
+                      //  var div = document.getElementById('newpost');
+                       // if (div.style.display !== 'none') {
+                        //    div.style.display = 'none';
+                       // }
+                       // else {
+                        //    div.style.display = 'block';
+                        //}
+                   // };
+                 </script>
                  <br>
+                 
                  <b>Select Room:</b>
                  <select name="roomID">
                      <?php
                      $m=0;
                      while ($m < $num4) {
-                         $roomid=mysql_result($result4,$m,"roomID"); 
+                         $roomid=mysql_result($result4,$m,"id"); 
                          echo "<option value='$roomid'>$roomid"; 
-                         $k++;
+                         $m++;
                       } 
                       ?> 
                  </select>
-            
+            <button type="button" value="<?php echo"$roomid"?>">Select Room</button>
+                 
         </div>
         </div>
         <div id="leftcolumn">

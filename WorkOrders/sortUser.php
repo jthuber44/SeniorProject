@@ -34,15 +34,16 @@
                 $result2=mysql_query($query2); 
                 $num2=mysql_numrows($result2); 
                 mysql_close(); 
+
+                if($num2==1){
                 $buildingID=mysql_result($result2,$i,"buildingID");
                 $roomID=mysql_result($result2,$i,"roomID");
-                if($num2==1){
                 echo"
                     <form method='post' id='student' action='studentUser.php'>
-                    <input type='number' name='id' value='$id'/>
-                    <input type='text' name='name' value='$name'/>
-                    <input type='number' name='buildingID' value='$buildingID'/>
-                    <input type='number' name='roomID' value='$roomID'/>
+                    <input type='number' name='id' value='$id' hidden='true'/>
+                    <input type='text' name='name' value='$name' hidden='true'/>
+                    <input type='number' name='buildingID' value='$buildingID' hidden='true'/>
+                    <input type='number' name='roomID' value='$roomID' hidden='true'/>
                     </form>
                     <script type='text/javascript'>
                     document.getElementById('student').submit();
@@ -63,11 +64,11 @@
                     $floorIDadmin=mysql_result($result3,$i,"floorID");
                     echo"
                     <form method='post' id='admin' action='adminUser.php'>
-                    <input type='text' name='id' value='$id'/>
-                    <input type='text' name='name' value='$name'/>
-                    <input type='number' name='buildingID' value='$buildingIDadmin'/>
-                    <input type='number' name='roomID' value='$roomIDadmin'/>
-                    <input type='number' name='floorID' value='$floorIDadmin'/>
+                    <input type='text' name='id' value='$id' hidden='true'/>
+                    <input type='text' name='name' value='$name' hidden='true'/>
+                    <input type='number' name='buildingID' value='$buildingIDadmin' hidden='true'/>
+                    <input type='number' name='roomID' value='$roomIDadmin' hidden='true'/>
+                    <input type='number' name='floorID' value='$floorIDadmin' hidden='true'/>
                     </form>
                     <script type='text/javascript'>
                     document.getElementById('admin').submit();
