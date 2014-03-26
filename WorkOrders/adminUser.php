@@ -52,6 +52,14 @@
             #footer a{
                 color: #FFFF80;
             }
+            
+            #prevOrders{
+                float: left;
+                background-color:#EAEAEA;
+                width:300px;
+                height:400px;
+                overflow:scroll;
+            }
         </style>
     </head>
     
@@ -167,21 +175,22 @@
         <div id="leftcolumn">
             <b>Previous Work Orders:</b>
             </br>
-            <?php $j=0;while ($j < $num) 
-                {$f1=mysql_result($result1,$j,"title");
-                $f2=mysql_result($result1,$j,"dateTime");?>
-            <table>
-                <tr>
-                    <td>
-                        <font face="Arial, Helvetica, sans-serif"><?php echo $f1; ?></font>
-                    </td>
-                    <td>
-                        <font face="Arial, Helvetica, sans-serif"><?php echo $f2; ?></font>
-                    </td>
-                </tr>
-            </table>
-            <?php $j++;} ?>
-           
+            <div id="prevOrders">
+                <?php $j=0;while ($j < $num) 
+                    {$f1=mysql_result($result1,$j,"title");
+                    $f2=mysql_result($result1,$j,"dateTime");?>
+                <table>
+                    <tr>
+                        <td>
+                            <font face="Arial, Helvetica, sans-serif"><?php echo $f1; ?></font>
+                        </td>
+                        <td>
+                            <font face="Arial, Helvetica, sans-serif"><?php echo $f2; ?></font>
+                        </td>
+                    </tr>
+                </table>
+                <?php $j++;} ?>
+            </div>
         </div>
         <div id="footer">Work Order Senior Project 2014</div>
     </body>

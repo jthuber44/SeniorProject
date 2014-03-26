@@ -33,7 +33,7 @@
             #leftcolumn{
                 float: left;
                 width: 300px;
-                height: 800px;
+                height: 525px;
                 margin-left: -100%;
                 background: #EAEAEA;
             }
@@ -52,6 +52,14 @@
             #footer a{
                 color: #FFFF80;
             }
+            
+            #prevOrders{
+                float: left;
+                background-color:#EAEAEA;
+                width:300px;
+                height:400px;
+                overflow:scroll;
+                }
         </style>
     </head>
     
@@ -67,7 +75,7 @@
         
         mysql_connect("localhost",$username,$password); 
         @mysql_select_db($database) or die( "Unable to select database"); 
-        $query1="SELECT id, title, dateTime FROM WORK_ORDERS Where userID='$id'"; 
+        $query1="SELECT id, title, dateTime,statusDescription  FROM WORK_ORDERS Where userID='$id'"; 
         $result1=mysql_query($query1); 
         $num=mysql_numrows($result1);
         mysql_close(); 
@@ -111,21 +119,36 @@
         <div id="leftcolumn">
             <b>Previous Work Orders:</b>
             <br>
+            <div id="prevOrders">
                 <?php $j=0;while ($j < $num)
                     {$f1=mysql_result($result1,$j,"title");
-                    $f2=mysql_result($result1,$j,"dateTime");?>
-            <table>
-                <tr>
-                    <td>
-                        <font face="Arial, Helvetica, sans-serif"><?php echo $f1; ?></font>
-                    </td>
-                    <td>
-                        <font face="Arial, Helvetica, sans-serif"><?php echo $f2; ?></font>
-                    </td>
-                </tr>
-            </table>
+                    $f2=mysql_result($result1,$j,"dateTime");
+                    ?>
+            
+                <table>
+                    <tr>
+                        <td>
+                            
+                            <script>
+                            function basicPopup(url) {
+                                popupWindow = window.open
+                                (url,'popUpWindow','height=500,width=650,left=100,\n\
+                                top=100,resizable=yes,scrollbars=yes,toolbar=yes,\n\
+                                menubar=no,location=no,directories=no, status=yes');
+                                }
+                            </script>
+                            <a href="prevOrderStatus" 
+                               onclick="basicPopup(this.href);return false">
+                                <font face="Arial, Helvetica, sans-serif"><?php echo $f1; ?></font>
+                            </a> 
+                        </td>
+                        <td>
+                            <font face="Arial, Helvetica, sans-serif"><?php echo $f2; ?></font>
+                        </td>
+                    </tr>
+                </table>
             <?php $j++;}?>
-           
+           </div>
         </div>
         <div id="footer">Work Order Senior Project 2014</div>
     </body>
