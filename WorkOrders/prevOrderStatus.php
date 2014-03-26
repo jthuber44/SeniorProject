@@ -107,5 +107,6 @@
         </table>
             <?php $j++;}?>
         trying to output previous work order status description
+        test
     </body>
 </html>
