@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 19, 2014 at 04:00 AM
+-- Generation Time: Mar 26, 2014 at 08:24 PM
 -- Server version: 5.1.66
 -- PHP Version: 5.3.3-7+squeeze16
 
@@ -314,6 +314,7 @@ CREATE TABLE IF NOT EXISTS `WORK_ORDERS` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
+  `statusDescription` varchar(255) NOT NULL,
   `dateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `userID` int(1) NOT NULL,
   `buildingID` int(1) NOT NULL,
@@ -321,16 +322,17 @@ CREATE TABLE IF NOT EXISTS `WORK_ORDERS` (
   `roomID` int(1) NOT NULL,
   `zone` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `WORK_ORDERS`
 --
 
-INSERT INTO `WORK_ORDERS` (`id`, `title`, `description`, `dateTime`, `userID`, `buildingID`, `floorID`, `roomID`, `zone`) VALUES
-(1, 'chair', '//sample ', '2014-03-18 02:14:53', 6, 0, 0, 0, 0),
-(2, 'desk', '//sample ', '2014-03-18 02:14:53', 6, 0, 0, 0, 0),
-(3, 'dresser', '//sample ', '2014-03-18 02:14:53', 7, 0, 0, 0, 0),
-(4, 'sink', '//sample ', '2014-03-18 02:14:53', 7, 0, 0, 0, 0),
-(5, 'desk', 'front desk left desk leg broken', '2014-03-18 22:28:58', 6, 1, 0, 0, 1),
-(9, 'closet', 'door broke off', '2014-03-18 22:50:54', 7, 9, 0, 0, 1);
+INSERT INTO `WORK_ORDERS` (`id`, `title`, `description`, `statusDescription`, `dateTime`, `userID`, `buildingID`, `floorID`, `roomID`, `zone`) VALUES
+(1, 'chair', '//sample ', '', '2014-03-18 02:14:53', 6, 0, 0, 0, 0),
+(2, 'desk', '//sample ', '', '2014-03-18 02:14:53', 6, 0, 0, 0, 0),
+(3, 'dresser', '//sample ', '', '2014-03-18 02:14:53', 7, 0, 0, 0, 0),
+(4, 'sink', '//sample ', '', '2014-03-18 02:14:53', 7, 0, 0, 0, 0),
+(5, 'desk', 'front desk left desk leg broken', '', '2014-03-18 22:28:58', 6, 1, 0, 0, 1),
+(10, 'chair', 'leg broken', '', '2014-03-26 18:04:35', 6, 1, 0, 0, 1),
+(9, 'closet', 'door broke off', '', '2014-03-18 22:50:54', 7, 9, 0, 0, 1);
