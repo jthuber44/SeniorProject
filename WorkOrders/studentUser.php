@@ -100,26 +100,12 @@
         <div id="contentwrapper">
         <div id="contentcolumn">
             <center><b>Floor Plan:</b></center>
-             <form method="post" action="workOrder.php">
-                 <input type="text" value="<?php echo "$buildingID"?>" name="buildingID" hidden="true">
-                 <input type="text" value="<?php echo "$roomID"?>" name="roomID" hidden="true">
-                 <input type="text" value="<?php echo "$name"?>" name="name" hidden="true">
-                 <input type="text" value="<?php echo "$id"?>" name="id" hidden="true">
-                 <input type="text" value="0" name="admin" hidden="true">
-                 <input type="text" value="0" name="floorID" hidden="true">
-                    <center>
-                    <table style="width:400px">
-                        <tr>
-                          <td><input type="submit" value="1" name="box"> </td>
-                          <td><input type="submit" value="2" name="box"> </td>
-                        </tr>
-                        <tr>
-                          <td><input type="submit" value="3" name="box"></td>
-                          <td><input type="submit" value="4" name="box"></td>
-                        </tr>
-                    </table>
-                    </center>
-                </form>
+                <div id="floor" height="200px">
+                 <?php 
+                 global $student;
+                 $student = '1';
+                   include('floorPlans.php'); ?>
+                </div>
         </div>
         </div>
         <div id="leftcolumn">

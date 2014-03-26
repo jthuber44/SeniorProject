@@ -157,6 +157,12 @@
             <button type="button" value="<?php echo"$roomid"?>">Select Room</button>
                  
         </div>
+                <div id="floor" height="200px">
+                 <?php 
+                 global $student;
+                 $student = '0';
+                   include('floorPlans.php'); ?>
+                </div>
         </div>
         <div id="leftcolumn">
             <b>Previous Work Orders:</b>
