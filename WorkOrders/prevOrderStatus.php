@@ -64,41 +64,40 @@
     </head>
 
 <?php
-    $id=$_POST['id'];
-    //$name=$_POST['name'];
-    //$buildingID=$_POST['buildingID'];
-    //$roomID=$_POST['roomID'];
-    $username="root"; 
-    $password="lininG"; 
-    $database="SENIOR_PROJECT"; 
-    //$i=0;
-
-    mysql_connect("localhost",$username,$password); 
-    @mysql_select_db($database) or die( "Unable to select database"); 
-    $query="SELECT id, title, dateTime,statusDescription  FROM WORK_ORDERS Where userID='$id'"; 
-    $result=mysql_query($query); 
-    $num=mysql_numrows($result);
-    mysql_close(); 
+        $workID=$_POST['id'];
+//        $name=$_POST['name'];
+//        $buildingID=$_POST['buildingID'];
+//        $roomID=$_POST['roomID'];
+        $username="root"; 
+        $password="lininG"; 
+        $database="SENIOR_PROJECT"; 
+//        $i=0;
+        
+        mysql_connect("localhost",$username,$password); 
+        @mysql_select_db($database) or die( "Unable to select database"); 
+        $query="SELECT id, title, dateTime,statusDescription FROM WORK_ORDERS Where id='$workID'"; 
+        $result=mysql_query($query); 
+        $num=mysql_numrows($result); 
+        mysql_close(); 
 ?>
     <body>
         <?php $j=0;while ($j < $num)
-                    {$f1=mysql_result($result,$j,"title");
-                    $f2=mysql_result($result,$j,"dateTime");
-                    $f3=mysql_result($result,$j,"statusDescription");
-                    ?>
+                    {$title=mysql_result($result,$j,"title");
+                    $dateTime=mysql_result($result,$j,"dateTime");
+                    $description=mysql_result($result,$j,"statusDescription");?>
         
         <table>
             <tr>
                 <td>
-                    <font face="Arial, Helvetica, sans-serif"><?php echo $f1; ?></font>
+                    <font face="Arial, Helvetica, sans-serif"><?php echo $title; ?></font>
                 </td>
                 <td>
-                    <font face="Arial, Helvetica, sans-serif"><?php echo $f2; ?></font>
+                    <font face="Arial, Helvetica, sans-serif"><?php echo $dateTime; ?></font>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <font face="Arial, Helvetica, sans-serif"><?php echo $f3; ?></font>
+                    <font face="Arial, Helvetica, sans-serif"><?php echo $description; ?></font>
                 </td>
                 <td>
 

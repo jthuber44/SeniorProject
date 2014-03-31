@@ -75,7 +75,7 @@
         
         mysql_connect("localhost",$username,$password); 
         @mysql_select_db($database) or die( "Unable to select database"); 
-        $query1="SELECT id, title, dateTime, statusDescription  FROM WORK_ORDERS Where userID='$id'"; 
+        $query1="SELECT id, title, dateTime, statusDescription FROM WORK_ORDERS Where userID='$id'"; 
         $result1=mysql_query($query1); 
         $num=mysql_numrows($result1);
         mysql_close(); 
@@ -123,6 +123,7 @@
                 <?php $j=0;while ($j < $num)
                     {$f1=mysql_result($result1,$j,"title");
                     $f2=mysql_result($result1,$j,"dateTime");
+                    $workID=mysql_result($result1,$j,"id")
                     ?>
             
                 <table>

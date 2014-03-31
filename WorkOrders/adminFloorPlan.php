@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Benedictine College Work Orders: Student User</title>
+        <title>Benedictine College Work Orders: Admin User</title>
         <style type="text/css">
             body{
                 margin:0;
