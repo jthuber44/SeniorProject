@@ -105,9 +105,7 @@
             <h1></div></div>
         <div id="contentwrapper">
         <div id="contentcolumn">
-            <center><b>Floor Plan:</b></center>
-            This is where the floor plan for whatever 
-            room/floor the admin chose will be.
+            
         </div>
         </div>
         <div id="leftcolumn">
