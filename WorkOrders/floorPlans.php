@@ -1,6 +1,7 @@
 <?php
         $buildingID=$_POST['buildingID'];
         $id=$_POST['id'];
+        $admin=$_POST['admin'];
 ?>
 
 
@@ -26,13 +27,16 @@
 }
 </style>
 
-
-             <form method="post" action="WorkOrder.php">
+<?php
+if($admin==0)
+{?>
+             <form method="post" action="studentUser.php">
                  <input type="text" value="<?php echo "$buildingID"?>" name="buildingID" hidden="true">
                  <input type="text" value="<?php echo "$roomID"?>" name="roomID" hidden="true">
                  <input type="text" value="<?php echo "$name"?>" name="name" hidden="true">
                  <input type="text" value="<?php echo "$id"?>" name="id" hidden="true">
-                 <input type="text" value="0" name="admin" hidden="true">
+                 <input type="text" value="1" name="Update" hidden="true">
+                 <input type="text" value="<?php echo "$admin"?>" name="admin" hidden="true">
                  <input type="text" value="0" name="floorID" hidden="true">
                     <center>
                     <table width="400px">
@@ -41,3 +45,33 @@
                     </table>
                     </center>
                 </form>
+
+<?php
+}?>
+
+
+
+
+
+
+<?php
+if($admin==1)
+{?>
+             <form method="post" action="adminUser.php">
+                 <input type="text" value="<?php echo "$buildingID"?>" name="buildingID" hidden="true">
+                 <input type="text" value="<?php echo "$roomID"?>" name="roomID" hidden="true">
+                 <input type="text" value="<?php echo "$name"?>" name="name" hidden="true">
+                 <input type="text" value="<?php echo "$id"?>" name="id" hidden="true">
+                 <input type="text" value="1" name="Update" hidden="true">
+                 <input type="text" value="<?php echo "$admin"?>" name="admin" hidden="true">
+                 <input type="text" value="0" name="floorID" hidden="true">
+                    <center>
+                    <table width="400px">
+                        <tr>
+                            <input type="submit" value="1" name="box" class="imgClass" height="400px"/>
+                    </table>
+                    </center>
+                </form>
+
+<?php
+}?>

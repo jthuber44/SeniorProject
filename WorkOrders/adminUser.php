@@ -68,11 +68,18 @@
         $name=$_POST['name'];
         $buildingID=$_POST['buildingID'];
         $roomID=$_POST['roomID'];
+        $Update=$_POST['Update'];
         $username="root"; 
         $password="lininG"; 
         $database="SENIOR_PROJECT"; 
         $i=0;
         
+        if($Update==1)
+        {
+            $box=$_POST['box'];
+            $floorID=$_POST['floorID'];
+            $admin=$_POST['admin'];
+            
         mysql_connect("localhost",$username,$password); 
         @mysql_select_db($database) or die( "Unable to select database"); 
         $query1="SELECT id, title, dateTime FROM WORK_ORDERS Where userID='$id'"; 
@@ -94,6 +101,32 @@
         mysql_close(); 
         
         $buildingName=mysql_result($result2,$i,"name");
+        }
+        
+        else{
+        
+            mysql_connect("localhost",$username,$password); 
+            @mysql_select_db($database) or die( "Unable to select database"); 
+            $query1="SELECT id, title, dateTime FROM WORK_ORDERS Where userID='$id'"; 
+            $result1=mysql_query($query1); 
+            $num=mysql_numrows($result1);
+
+            $query2="SELECT name FROM BUILDING Where id='$buildingID'"; 
+            $result2=mysql_query($query2); 
+
+
+            $query3="SELECT id, floorID FROM FLOOR Where buildingID='$buildingID'"; 
+            $result3=mysql_query($query3); 
+            $num3=mysql_numrows($result3);
+
+            $query4="SELECT id FROM ROOM Where buildingID='$buildingID'"; 
+            $result4=mysql_query($query4); 
+            $num4=mysql_numrows($result4);
+
+            mysql_close(); 
+
+            $buildingName=mysql_result($result2,$i,"name");
+        }
         
         ?>
     
@@ -150,7 +183,6 @@
                    // };
                  </script>
                  <br>
-                 
                  <b>Select Room:</b>
                  <select name="roomID">
                      <?php
@@ -166,10 +198,16 @@
                  
         </div>
                 <div id="floor" height="200px">
-                 <?php 
+                <?php
+                 if($Update==1)
+                 {
+                     
+                     include('workOrder.php'); 
+                 }
+                 if($Update==0){
                  global $student;
                  $student = '0';
-                   include('floorPlans.php'); ?>
+                 include('floorPlans.php'); }?>
                 </div>
         </div>
         <div id="leftcolumn">

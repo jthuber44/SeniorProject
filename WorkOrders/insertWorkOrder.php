@@ -27,6 +27,8 @@
                      <input type='text' name='name' value='$name' hidden='true'/>
                      <input type='number' name='buildingID' value='$buildingID' hidden='true'/>
                      <input type='number' name='roomID' value='$roomID' hidden='true'/>
+                     <input type='number' name='admin' value='$admin' hidden='true'/>
+                     <input type='text' value='0' name='Update' hidden='true'/>
                      </form>
                      <script type='text/javascript'> 
                      document.getElementById('student').submit();
@@ -38,9 +40,11 @@
                 echo"
                      <form method='post' id='admin' action='adminUser.php'>
                      <input type='number' name='id' value='$id' hidden='true'/>
+                     <input type='text' value='0' name='Update' hidden='true'/>
                      <input type='text' name='name' value='$name' hidden='true'/>
                      <input type='number' name='buildingID' value='$buildingID' hidden='true'/>
                      <input type='number' name='roomID' value='$roomID' hidden='true'/>
+                     <input type='number' name='admin' value='$admin' hidden='true'/>
                      </form>
                      <script type='text/javascript'> 
                      document.getElementById('admin').submit();

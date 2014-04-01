@@ -41,8 +41,10 @@
                 echo"
                     <form method='post' id='student' action='studentUser.php'>
                     <input type='number' name='id' value='$id' hidden='true'/>
+                    <input type='number' name='Update' value='0' hidden='true'/>
                     <input type='text' name='name' value='$name' hidden='true'/>
                     <input type='number' name='buildingID' value='$buildingID' hidden='true'/>
+                    <input type='number' name='admin' value='0' hidden='true'/>
                     <input type='number' name='roomID' value='$roomID' hidden='true'/>
                     </form>
                     <script type='text/javascript'>
@@ -65,7 +67,9 @@
                     echo"
                     <form method='post' id='admin' action='adminUser.php'>
                     <input type='text' name='id' value='$id' hidden='true'/>
+                    <input type='number' name='Update' value='0' hidden='true'/>
                     <input type='text' name='name' value='$name' hidden='true'/>
+                    <input type='number' name='admin' value='1' hidden='true'/>
                     <input type='number' name='buildingID' value='$buildingIDadmin' hidden='true'/>
                     <input type='number' name='roomID' value='$roomIDadmin' hidden='true'/>
                     <input type='number' name='floorID' value='$floorIDadmin' hidden='true'/>

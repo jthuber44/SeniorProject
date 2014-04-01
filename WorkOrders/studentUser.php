@@ -67,26 +67,50 @@
         $id=$_POST['id'];
         $name=$_POST['name'];
         $buildingID=$_POST['buildingID'];
-        $roomID=$_POST['roomID'];
+        $roomID=$_POST['roomID'];   
+        $Update=$_POST['Update'];
+        $admin=$_POST['admin'];
         $username="root"; 
         $password="lininG"; 
         $database="SENIOR_PROJECT"; 
         $i=0;
         
-        mysql_connect("localhost",$username,$password); 
-        @mysql_select_db($database) or die( "Unable to select database"); 
-        $query1="SELECT id, title, dateTime, statusDescription FROM WORK_ORDERS Where userID='$id'"; 
-        $result1=mysql_query($query1); 
-        $num=mysql_numrows($result1);
-        mysql_close(); 
+        if($Update==1)
+        {
+            $box=$_POST['box'];
+            $floorID=$_POST['floorID'];
+            mysql_connect("localhost",$username,$password); 
+            @mysql_select_db($database) or die( "Unable to select database"); 
+            $query1="SELECT id, title, dateTime, statusDescription FROM WORK_ORDERS Where userID='$id'"; 
+            $result1=mysql_query($query1); 
+            $num=mysql_numrows($result1);
+            mysql_close(); 
+
+            mysql_connect("localhost",$username,$password); 
+            @mysql_select_db($database) or die( "Unable to select database"); 
+            $query2="SELECT name FROM BUILDING Where id='$buildingID'"; 
+            $result2=mysql_query($query2); 
+            mysql_close(); 
+
+            $buildingName=mysql_result($result2,$i,"name");
+        }
         
-        mysql_connect("localhost",$username,$password); 
-        @mysql_select_db($database) or die( "Unable to select database"); 
-        $query2="SELECT name FROM BUILDING Where id='$buildingID'"; 
-        $result2=mysql_query($query2); 
-        mysql_close(); 
-        
-        $buildingName=mysql_result($result2,$i,"name");
+        else{
+            mysql_connect("localhost",$username,$password); 
+            @mysql_select_db($database) or die( "Unable to select database"); 
+            $query1="SELECT id, title, dateTime, statusDescription FROM WORK_ORDERS Where userID='$id'"; 
+            $result1=mysql_query($query1); 
+            $num=mysql_numrows($result1);
+            mysql_close(); 
+
+            mysql_connect("localhost",$username,$password); 
+            @mysql_select_db($database) or die( "Unable to select database"); 
+            $query2="SELECT name FROM BUILDING Where id='$buildingID'"; 
+            $result2=mysql_query($query2); 
+            mysql_close(); 
+
+            $buildingName=mysql_result($result2,$i,"name");
+        }
         ?>
     <body>
         <div id="maincontainer">
@@ -107,12 +131,23 @@
             <h1></div></div>
         <div id="contentwrapper">
         <div id="contentcolumn">
-            <center><b>Floor Plan:</b></center>
+         <?php 
+                 if($Update==1)
+                 {
+                     include('workOrder.php');
+                 }
+         ?>
                 <div id="floor" height="200px">
                  <?php 
-                 global $student;
-                 $student = '1';
-                   include('floorPlans.php'); ?>
+                 if($Update==0)
+                 {
+                 ?>
+                    <center><b>Floor Plan:</b></center>
+                 <?php
+                    global $student;
+                    $student = '1';
+                    include('floorPlans.php');
+                 } ?>
                 </div>
         </div>
         </div>
