@@ -150,8 +150,16 @@
             <h1></div></div>
         <div id="contentwrapper">
         <div id="contentcolumn">
+            <?php
+                 if($Update==1)
+                 {
+                     
+                     include('workOrder.php'); 
+                 }
+            
+            ?>
             <b>Select Floor:</b>
-                 <form method="post" action="workOrder.php">
+
                  <input type="text" value="<?php echo "$buildingID"?>" name="buildingID" hidden="true">
                  <input type="text" value="<?php echo "$name"?>" name="name" hidden="true">
                  <input type="text" value="<?php echo "$id"?>" name="id" hidden="true">
@@ -199,11 +207,6 @@
         </div>
                 <div id="floor" height="200px">
                 <?php
-                 if($Update==1)
-                 {
-                     
-                     include('workOrder.php'); 
-                 }
                  if($Update==0){
                  global $student;
                  $student = '0';
