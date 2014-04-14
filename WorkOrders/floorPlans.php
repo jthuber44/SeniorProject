@@ -18,9 +18,7 @@
     cursor: pointer;
     outline: 0;
 }
-.imgClass:hover{ 
-      background-position:  0px -1px;
-}
+
 
 .imgClass:active{
       background-position:  0px -3px;
