@@ -173,7 +173,7 @@
                                 menubar=no,location=no,directories=no, status=yes');
                                 }
                             </script>
-                            <a href="prevOrderStatus" 
+                            <a href="prevOrderStatus.php?id=<?php echo "$id";?>&order=<?php echo "$workID";?>" 
                                onclick="basicPopup(this.href);return false">
                                 <font face="Arial, Helvetica, sans-serif"><?php echo $f1; ?></font>
                             </a> 

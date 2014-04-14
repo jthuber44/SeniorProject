@@ -64,18 +64,16 @@
     </head>
 
 <?php
-        $workID=$_POST['id'];
-//        $name=$_POST['name'];
-//        $buildingID=$_POST['buildingID'];
-//        $roomID=$_POST['roomID'];
+        $workID=$_GET['id'];
+        $order=$_GET['order'];
         $username="root"; 
         $password="lininG"; 
         $database="SENIOR_PROJECT"; 
-//        $i=0;
+        $i=0;
         
         mysql_connect("localhost",$username,$password); 
         @mysql_select_db($database) or die( "Unable to select database"); 
-        $query="SELECT id, title, dateTime,statusDescription FROM WORK_ORDERS Where id='$workID'"; 
+        $query="SELECT id, title, dateTime, statusDescription FROM WORK_ORDERS Where userID='$workID' and id='$order'"; 
         $result=mysql_query($query); 
         $num=mysql_numrows($result); 
         mysql_close(); 
@@ -105,7 +103,6 @@
             </tr>
         </table>
             <?php $j++;}?>
-        trying to output previous work order status description
-        test
+       
     </body>
 </html>

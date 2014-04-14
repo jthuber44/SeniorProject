@@ -61,6 +61,7 @@
             </div>
             </div>
                 <?php
+                
                 ?>
                 <form method="post" action="sortUser.php">
                     <center>

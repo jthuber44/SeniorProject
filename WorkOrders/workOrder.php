@@ -37,8 +37,11 @@
                         <input type="text" value="<?php echo"$admin"?>" name="admin" hidden="true"/>
                         <input type="submit" value="Insert New WorkOrder">
                     </center>
-                </form>
-            
+             </form>
+<?php
+if($admin==0)
+{
+?>
             <form method="post" action="studentUser.php">
                     <center>
                     <input type="text" value="<?php echo"$box"?>" name="zone" hidden="true"/>
@@ -51,7 +54,29 @@
                     <input type="text" value="0" name="Update" hidden="true"/>
                     <input type="submit" value="Cancel">
                     </center>
-                </form>
+             </form>               
+<?php
+}
+if($admin==1)
+{
+?>
+                   <form method="post" action="adminUser.php">
+                    <center>
+                    <input type="text" value="<?php echo"$box"?>" name="zone" hidden="true"/>
+                    <input type="text" value="<?php echo"$buildingID"?>" name="buildingID" hidden="true"/>
+                    <input type="text" value="<?php echo"$roomID"?>" name="roomID" hidden="true"/>
+                    <input type="text" value="<?php echo"$floorID"?>" name="floorID" hidden="true"/>
+                    <input type="text" value="<?php echo"$id"?>" name="id" hidden="true"/>
+                    <input type="text" value="<?php echo"$name"?>" name="name" hidden="true"/>
+                    <input type="text" value="<?php echo"$admin"?>" name="admin" hidden="true"/>
+                    <input type="text" value="0" name="Update" hidden="true"/>
+                    <input type="submit" value="Cancel">
+                    </center>
+             </form>         
+            
+<?php
+}
+?>
         </div>
         </div>
         

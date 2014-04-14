@@ -3,11 +3,10 @@
         $userpassword=$_POST['password'];
         if($email==NULL||$userpassword==NULL)
         {
-                       echo "   <form method='post' action='MainPage.php'> 
-                    Invalid Email or Password.<br>
-                    Email:    <input type='text' size='30' name='email'/> <br>
-                    Password: <input type='password' size='30' name='password'/><br>
-                    <input type='submit' value='Login'> 
+                    echo "   <form method='post' id='Login' action='index.php'> 
+                    <script type='text/javascript'>
+                    document.getElementById('Login').submit();
+                    </script>
                     </form> "; 
         }
         
