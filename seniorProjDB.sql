@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 26, 2014 at 08:24 PM
+-- Generation Time: Apr 15, 2014 at 02:36 AM
 -- Server version: 5.1.66
 -- PHP Version: 5.3.3-7+squeeze16
 
@@ -322,17 +322,19 @@ CREATE TABLE IF NOT EXISTS `WORK_ORDERS` (
   `roomID` int(1) NOT NULL,
   `zone` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `WORK_ORDERS`
 --
 
 INSERT INTO `WORK_ORDERS` (`id`, `title`, `description`, `statusDescription`, `dateTime`, `userID`, `buildingID`, `floorID`, `roomID`, `zone`) VALUES
-(1, 'chair', '//sample ', '', '2014-03-18 02:14:53', 6, 0, 0, 0, 0),
-(2, 'desk', '//sample ', '', '2014-03-18 02:14:53', 6, 0, 0, 0, 0),
-(3, 'dresser', '//sample ', '', '2014-03-18 02:14:53', 7, 0, 0, 0, 0),
-(4, 'sink', '//sample ', '', '2014-03-18 02:14:53', 7, 0, 0, 0, 0),
-(5, 'desk', 'front desk left desk leg broken', '', '2014-03-18 22:28:58', 6, 1, 0, 0, 1),
-(10, 'chair', 'leg broken', '', '2014-03-26 18:04:35', 6, 1, 0, 0, 1),
-(9, 'closet', 'door broke off', '', '2014-03-18 22:50:54', 7, 9, 0, 0, 1);
+(1, 'chair', 'Left leg broke off', 'glued leg back on', '2014-03-18 02:14:53', 6, 0, 0, 0, 0),
+(2, 'ceiling light', 'light out', 'replaced bulb', '2014-03-18 02:14:53', 6, 0, 0, 0, 0),
+(3, 'dresser', 'drawer is stuck', 'replaced drawer', '2014-03-18 02:14:53', 7, 0, 0, 0, 0),
+(4, 'sink', 'clogged sink', 'put cleaner down sink to declog', '2014-03-18 02:14:53', 7, 0, 0, 0, 0),
+(5, 'closet ', 'door wont open', 'replaced door runner', '2014-03-18 22:28:58', 6, 1, 0, 0, 1),
+(10, 'door knob', 'door knob fell off', 'replaced door knob', '2014-03-26 18:04:35', 6, 1, 0, 0, 1),
+(9, 'ethernet port', 'port not working', 'replaced port', '2014-03-18 22:50:54', 7, 9, 0, 0, 1),
+(11, 'chair', 'leg broken', 'glued leg back on', '2014-04-01 20:46:02', 2, 2, 0, 0, 1),
+(12, 'bathroom light', 'light out', 'Ordered replaced light', '2014-04-14 19:04:44', 6, 1, 0, 0, 1);

@@ -27,7 +27,7 @@
             }
 
             #contentcolumn{
-                margin-left: 200px;
+                margin-left: 0px;
             }
 
             #leftcolumn{
@@ -57,7 +57,7 @@
                 float: left;
                 background-color:#EAEAEA;
                 width:300px;
-                height:400px;
+                height:500px;
                 overflow:scroll;
                 }
         </style>
@@ -73,36 +73,75 @@
         
         mysql_connect("localhost",$username,$password); 
         @mysql_select_db($database) or die( "Unable to select database"); 
-        $query="SELECT id, title, dateTime, statusDescription FROM WORK_ORDERS Where userID='$workID' and id='$order'"; 
+        $query="SELECT id, title, dateTime, description, statusDescription 
+            FROM WORK_ORDERS Where userID='$workID' and id='$order'"; 
         $result=mysql_query($query); 
         $num=mysql_numrows($result); 
         mysql_close(); 
 ?>
     <body>
-        <?php $j=0;while ($j < $num)
+        <div id="maincontainer">
+        <div id="topsection">
+            <table style="width:650px">
+                <tr>
+                  <td><img src="logo.png" alt="Benedictine College"></td>
+                  <td>
+                      <h1><?php echo "Previous Order" ?></h1>
+                  </td>
+            </table>
+        </div></div>
+        
+        <div id="contentwrapper">
+            <div id="contentcolumn">
+                <?php $j=0;while ($j < $num)
                     {$title=mysql_result($result,$j,"title");
                     $dateTime=mysql_result($result,$j,"dateTime");
-                    $description=mysql_result($result,$j,"statusDescription");?>
-        
-        <table>
-            <tr>
-                <td>
-                    <font face="Arial, Helvetica, sans-serif"><?php echo $title; ?></font>
-                </td>
-                <td>
-                    <font face="Arial, Helvetica, sans-serif"><?php echo $dateTime; ?></font>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <font face="Arial, Helvetica, sans-serif"><?php echo $description; ?></font>
-                </td>
-                <td>
-
-                </td>
-            </tr>
-        </table>
-            <?php $j++;}?>
-       
+                    $description=mysql_result($result,$j,"description");
+                    $status=mysql_result($result,$j,"statusDescription");?>
+                <center>
+                    </br>
+                    </br>
+                    <table border="1" width="550">
+                        <tr>
+                            <th width="200">
+                                <?php echo "Title:"; ?>
+                            </th>
+                            <th>
+                                <?php echo "Date and Time:"; ?>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <font face="Arial, Helvetica, sans-serif"><?php echo $title; ?></font>
+                            </td>
+                            <td>
+                                <font face="Arial, Helvetica, sans-serif"><?php echo $dateTime; ?></font>
+                            </td>
+                        </tr>
+                    </table>
+                    </br>
+                    <table border="1" width="550">
+                    <tr>
+                        <th width="200">
+                            <?php echo "Issue:"; ?>
+                        </th>
+                        <th>
+                            <?php echo "Status:"; ?>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <font face="Arial, Helvetica, sans-serif"><?php echo $description; ?></font>
+                        </td>
+                        <td>
+                            <font face="Arial, Helvetica, sans-serif"><?php echo $status; ?></font>
+                        </td>
+                    </tr>
+                    </table>
+                </center>
+                    <?php $j++;}?>
+            </div>
+        </div>
+        <div id="footer">Work Order Senior Project 2014</div>
     </body>
 </html>

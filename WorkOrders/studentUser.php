@@ -57,7 +57,7 @@
                 float: left;
                 background-color:#EAEAEA;
                 width:300px;
-                height:400px;
+                height:500px;
                 overflow:scroll;
                 }
         </style>
