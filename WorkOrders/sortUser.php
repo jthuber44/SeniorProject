@@ -60,6 +60,26 @@
                     $num3=mysql_numrows($result3); 
                     mysql_close(); 
                     
+                    if($num3==0)
+                    {
+                        mysql_connect("localhost",$username,$password); 
+                        @mysql_select_db($database) or die( "Unable to select database"); 
+                        $query4="SELECT staffID FROM OPERATIONS Where id='$id'"; 
+                        $result4=mysql_query($query3); 
+                        $num4=mysql_numrows($result3); 
+                        mysql_close(); 
+                        
+                        echo"
+                        <form method='post' id='operations' action='operationsUser.php?workOrders=0&update=0'>
+                        <input type='text' name='id' value='$id' hidden='true'/>
+                        <input type='text' name='name' value='$name' hidden='true'/>
+                        </form>
+                        <script type='text/javascript'>
+                        document.getElementById('operations').submit();
+                        </script>
+                        ";
+                    }
+                    else{
                     $buildingIDadmin=mysql_result($result3,$i,"buildingID");
                     $roomIDadmin=mysql_result($result3,$i,"roomID");
                     $floorIDadmin=mysql_result($result3,$i,"floorID");
@@ -78,20 +98,12 @@
                     </script>
                     ";
                             
-                    if($num3==0)
-                    {
-                        mysql_connect("localhost",$username,$password); 
-                        @mysql_select_db($database) or die( "Unable to select database"); 
-                        $query3="SELECT staffID FROM OPERATIONS Where id='$id'"; 
-                        $result3=mysql_query($query3); 
-                        $num3=mysql_numrows($result3); 
-                        mysql_close(); 
+        
                     }
-
                 }
                 
             }
-                    if($num==0)
+            if($num==0)
             {
                 echo "  <!DOCTYPE html>
                 <html>
