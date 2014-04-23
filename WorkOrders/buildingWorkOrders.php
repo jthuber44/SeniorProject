@@ -1,23 +1,4 @@
-<?php
-$i=0;
-        mysql_connect("localhost",$username,$password); 
-        @mysql_select_db($database) or die( "Unable to select database"); 
-        $query4="SELECT id FROM BUILDING Where name='$buildingName'"; 
-        $result4=mysql_query($query4); 
-        $num4=mysql_numrows($result4); 
-        mysql_close(); 
-        
-        $buildingID=mysql_result($result4,$i,"id");
-        
-        mysql_connect("localhost",$username,$password); 
-        @mysql_select_db($database) or die( "Unable to select database"); 
-        $query5="SELECT id, title, userID, dateTime, description, statusDescription 
-            FROM WORK_ORDERS Where buildingID='$buildingID'"; 
-        $result5=mysql_query($query5); 
-        $num5=mysql_numrows($result5); 
-        mysql_close(); 
-        
-?><style type="text/css">
+<style type="text/css">
             body{
                 margin:0;
                 padding:0;
@@ -42,7 +23,7 @@ $i=0;
             }
 
             #contentcolumn{
-                margin-left: 200px;
+                margin-left: 150px;
             }
 
             #leftcolumn{
@@ -76,24 +57,60 @@ $i=0;
                 overflow:scroll;
                 }
         </style>
+
+<?php
+$i=0;
+        $username="root"; 
+        $password="lininG"; 
+        $database="SENIOR_PROJECT";
+        $buildingName=$_GET['name'];
+
+        mysql_connect("localhost",$username,$password); 
+        @mysql_select_db($database) or die( "Unable to select database"); 
+        $query4="SELECT id FROM BUILDING Where name='$buildingName'"; 
+        $result4=mysql_query($query4); 
+        //$num4=mysql_numrows($result4); 
+        
+        
+        mysql_close(); 
+        
+        $buildingID=mysql_result($result4,$i,"id");
+        
+        mysql_connect("localhost",$username,$password); 
+        @mysql_select_db($database) or die( "Unable to select database"); 
+        $query5="SELECT id, title, userID, dateTime, description, statusDescription 
+            FROM WORK_ORDERS Where buildingID='$buildingID'"; 
+        $result5=mysql_query($query5); 
+        $num5=mysql_numrows($result5); 
+        mysql_close(); 
+        
+?>
+
+        
         <div id="contentwrapper">
         <div id="contentcolumn">
                      <?php $j=0;
                      if($num5==0)
                      {
-                         echo"There are no WorkOrders currently in $buildingName";
+                         echo"There are no work orders currently in $buildingName";
                      }
                      else
                      {
                         while ($j < $num5)
                         {
+                            
                             $operationsWorkOrderID=mysql_result($result5,$j,"id");
                             $workOrderTitle=mysql_result($result5,$j,"title");
                             $workID=mysql_result($result5,$j,"userID");
+                            $date=mysql_result($result5,$j,"dateTime");
                     ?>
             
                 <table>
                     <tr>
+                        <td>
+                            <font face="Arial, Helvetica, sans-serif"><?php echo $date;?></font>
+                            <?php echo ":    ";?>
+                        </td>
                         <td>
                             <script>
                             function basicPopup(url) {
@@ -104,7 +121,7 @@ $i=0;
                                 }
                             </script>
                             <a href="prevOrderStatus.php?id=<?php echo "$workID";?>&order=<?php echo "$operationsWorkOrderID";?>&userStatus=1>" 
-                               onclick="basicPopup(this.href);return false">
+                               onclick="basicPopup(this.href);return false;">
                             <font face="Arial, Helvetica, sans-serif"><?php echo $workOrderTitle; ?></font>
                             </a> 
                         </td>

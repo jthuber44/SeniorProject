@@ -124,7 +124,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td valign="top">
                             <b>
                             <?php echo "Status:"; ?>
                             </b>

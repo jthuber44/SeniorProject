@@ -27,7 +27,7 @@
             }
 
             #contentcolumn{
-                margin-left: 200px;
+                margin-left: 300px;
             }
 
             #leftcolumn{
@@ -64,9 +64,9 @@
     </head>
     
     <?php
-            $username="root"; 
-        $password="lininG"; 
-        $database="SENIOR_PROJECT"; 
+    $username="root"; 
+    $password="lininG"; 
+    $database="SENIOR_PROJECT"; 
     $workOrders=$_GET['workOrders'];
     
     if($workOrders==1)
@@ -77,14 +77,12 @@
         $workOrderBuilding=$_GET['workOrderBuilding'];
         $buildingName=$_GET['buildingName'];
         
-        
-        
-            mysql_connect("localhost",$username,$password); 
-            @mysql_select_db($database) or die( "Unable to select database"); 
-            $query2="SELECT name FROM BUILDING"; 
-            $result2=mysql_query($query2);
-            $num2=mysql_numrows($result2);
-            mysql_close(); 
+        mysql_connect("localhost",$username,$password); 
+        @mysql_select_db($database) or die( "Unable to select database"); 
+        $query2="SELECT name FROM BUILDING"; 
+        $result2=mysql_query($query2);
+        $num2=mysql_numrows($result2);
+        mysql_close(); 
             
     }
     else{    
@@ -92,14 +90,12 @@
         $id=$_POST['id'];
         $name=$_POST['name'];
         
-
- 
-            mysql_connect("localhost",$username,$password); 
-            @mysql_select_db($database) or die( "Unable to select database"); 
-            $query2="SELECT name FROM BUILDING"; 
-            $result2=mysql_query($query2);
-            $num2=mysql_numrows($result2);
-            mysql_close(); 
+        mysql_connect("localhost",$username,$password); 
+        @mysql_select_db($database) or die( "Unable to select database"); 
+        $query2="SELECT name FROM BUILDING"; 
+        $result2=mysql_query($query2);
+        $num2=mysql_numrows($result2);
+        mysql_close(); 
         }
             
         ?>
@@ -124,7 +120,7 @@
         <div id="contentcolumn">
             <div id="floor" height="200px">
                     <?php
-                      if($Update==1)
+                      if($Update=="1")
                       {   
                           include('buildingWorkOrders.php');          
                       }
@@ -135,7 +131,7 @@
         </div>
         </div>
         <div id="leftcolumn">
-            <b>Previous Work Orders:</b>
+            <b>Dorm Orders:</b>
             <br>
             <div id="prevOrders">
                 <?php $j=0;while ($j < $num2)
@@ -145,8 +141,6 @@
                 <table>
                     <tr>
                         <td>
-                            
-                            
                             <a href="operationsUser.php?workOrderBuilding=<?php echo "1";?>&update=1&name=<?php echo "$name";?>&id=<?php echo "$id";?>&buildingName=<?php echo "$buildingName";?>&workOrders=<?php echo "1";?>" >
                                 <font face="Arial, Helvetica, sans-serif"><?php echo $buildingName; ?></font>
                             </a> 
