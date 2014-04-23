@@ -85,6 +85,7 @@
             $result2=mysql_query($query2);
             $num2=mysql_numrows($result2);
             mysql_close(); 
+            
     }
     else{    
           
@@ -127,6 +128,7 @@
                       {   
                           include('buildingWorkOrders.php');          
                       }
+
                     ?>
                 </div>
                 </div>

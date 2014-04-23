@@ -66,6 +66,7 @@
 <?php
         $workID=$_GET['id'];
         $order=$_GET['order'];
+        $userStatus=$_GET['userStatus'];
         $username="root"; 
         $password="lininG"; 
         $database="SENIOR_PROJECT"; 
@@ -129,7 +130,27 @@
                             </b>
                         </td>
                         <td>
+                            <?php
+                            if($userStatus==0){?>
                             <font face="Arial, Helvetica, sans-serif"><?php echo $status; ?></font>
+                            <?php
+                            }
+                            else
+                            {?>
+                            <font face="Arial, Helvetica, sans-serif"><?php echo $status; ?></font>   
+                                <?php
+                                echo"             
+                                    <form method='post' action='updateStatus.php'> 
+                                    <input type='text' size='15' name='statusDescription'/>
+                                    <input type='text' name='userID' value='$workID' hidden='true'/>
+                                    <input type='text' name='orderID' value='$order' hidden='true'/>
+                                    <input type='submit' value='Update WorkOrder'> 
+                                    </form>";
+                                ?>
+                                 
+                            <?php
+                            }
+                            ?>
                         </td>
                     </tr>
                     </table>

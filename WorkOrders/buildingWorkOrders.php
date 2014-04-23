@@ -11,7 +11,7 @@ $i=0;
         
         mysql_connect("localhost",$username,$password); 
         @mysql_select_db($database) or die( "Unable to select database"); 
-        $query5="SELECT title, dateTime, description, statusDescription 
+        $query5="SELECT id, title, userID, dateTime, description, statusDescription 
             FROM WORK_ORDERS Where buildingID='$buildingID'"; 
         $result5=mysql_query($query5); 
         $num5=mysql_numrows($result5); 
@@ -78,18 +78,38 @@ $i=0;
         </style>
         <div id="contentwrapper">
         <div id="contentcolumn">
- <?php $j=0;while ($j < $num5)
-                    {$workOrderTitle=mysql_result($result5,$j,"title");
+                     <?php $j=0;
+                     if($num5==0)
+                     {
+                         echo"There are no WorkOrders currently in $buildingName";
+                     }
+                     else
+                     {
+                        while ($j < $num5)
+                        {
+                            $operationsWorkOrderID=mysql_result($result5,$j,"id");
+                            $workOrderTitle=mysql_result($result5,$j,"title");
+                            $workID=mysql_result($result5,$j,"userID");
                     ?>
             
                 <table>
                     <tr>
                         <td>
-         <font face="Arial, Helvetica, sans-serif"><?php echo $workOrderTitle; ?></font>
+                            <script>
+                            function basicPopup(url) {
+                                popupWindow = window.open
+                                (url,'popUpWindow','height=350,width=650,left=100,\n\
+                                top=100,resizable=yes,scrollbars=yes,toolbar=yes,\n\
+                                menubar=no,location=no,directories=no, status=yes');
+                                }
+                            </script>
+                            <a href="prevOrderStatus.php?id=<?php echo "$workID";?>&order=<?php echo "$operationsWorkOrderID";?>&userStatus=1>" 
+                               onclick="basicPopup(this.href);return false">
+                            <font face="Arial, Helvetica, sans-serif"><?php echo $workOrderTitle; ?></font>
                             </a> 
                         </td>
                     </tr>
                 </table>
-            <?php $j++;}?>
+                     <?php $j++;}}?>
         </div>
         </div>
