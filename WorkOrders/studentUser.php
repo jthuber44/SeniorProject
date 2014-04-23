@@ -59,7 +59,7 @@
                 width:300px;
                 height:500px;
                 overflow:scroll;
-                }
+            }
         </style>
     </head>
     
@@ -168,7 +168,7 @@
                             <script>
                             function basicPopup(url) {
                                 popupWindow = window.open
-                                (url,'popUpWindow','height=500,width=650,left=100,\n\
+                                (url,'popUpWindow','height=350,width=650,left=100,\n\
                                 top=100,resizable=yes,scrollbars=yes,toolbar=yes,\n\
                                 menubar=no,location=no,directories=no, status=yes');
                                 }

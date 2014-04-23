@@ -59,7 +59,7 @@
                 width:300px;
                 height:500px;
                 overflow:scroll;
-                }
+            }
         </style>
     </head>
     

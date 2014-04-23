@@ -78,67 +78,61 @@
         $result=mysql_query($query); 
         $num=mysql_numrows($result); 
         mysql_close(); 
+        
+        $j=0;while ($j < $num)
+            {$title=mysql_result($result,$j,"title");
+            $dateTime=mysql_result($result,$j,"dateTime");
+            $description=mysql_result($result,$j,"description");
+            $status=mysql_result($result,$j,"statusDescription");
 ?>
     <body>
         <div id="maincontainer">
         <div id="topsection">
             <table style="width:650px">
                 <tr>
-                  <td><img src="logo.png" alt="Benedictine College"></td>
+                  <td width="300"><img src="logo.png" alt="Benedictine College"></td>
                   <td>
-                      <h1><?php echo "Previous Order" ?></h1>
+                      <center>
+                      <h1><?php echo $title ?></h1>
+                      </center>
                   </td>
             </table>
         </div></div>
         
         <div id="contentwrapper">
             <div id="contentcolumn">
-                <?php $j=0;while ($j < $num)
-                    {$title=mysql_result($result,$j,"title");
-                    $dateTime=mysql_result($result,$j,"dateTime");
-                    $description=mysql_result($result,$j,"description");
-                    $status=mysql_result($result,$j,"statusDescription");?>
-                <center>
-                    </br>
-                    </br>
-                    <table border="1" width="550">
+                    <table width="550">
                         <tr>
-                            <th width="200">
-                                <?php echo "Title:"; ?>
-                            </th>
-                            <th>
-                                <?php echo "Date and Time:"; ?>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <font face="Arial, Helvetica, sans-serif"><?php echo $title; ?></font>
-                            </td>
-                            <td>
-                                <font face="Arial, Helvetica, sans-serif"><?php echo $dateTime; ?></font>
-                            </td>
-                        </tr>
-                    </table>
-                    </br>
-                    <table border="1" width="550">
-                    <tr>
-                        <th width="200">
-                            <?php echo "Issue:"; ?>
-                        </th>
-                        <th>
-                            <?php echo "Status:"; ?>
-                        </th>
+                        <td width="100">
+                            <b>
+                            <?php echo "Date/Time:"; ?>
+                            </b>
+                        </td>
+                        <td>
+                            <font face="Arial, Helvetica, sans-serif"><?php echo $dateTime; ?></font>
+                        </td>
                     </tr>
                     <tr>
                         <td>
+                            <b>
+                            <?php echo "Issue:"; ?>
+                            </b>
+                        </td>
+                        <td>
                             <font face="Arial, Helvetica, sans-serif"><?php echo $description; ?></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>
+                            <?php echo "Status:"; ?>
+                            </b>
                         </td>
                         <td>
                             <font face="Arial, Helvetica, sans-serif"><?php echo $status; ?></font>
                         </td>
                     </tr>
                     </table>
-                </center>
                     <?php $j++;}?>
             </div>
         </div>

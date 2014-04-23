@@ -217,21 +217,36 @@
             <b>Previous Work Orders:</b>
             </br>
             <div id="prevOrders">
-                <?php $j=0;while ($j < $num) 
+                <?php $j=0;while ($j < $num)
                     {$f1=mysql_result($result1,$j,"title");
-                    $f2=mysql_result($result1,$j,"dateTime");?>
+                    $f2=mysql_result($result1,$j,"dateTime");
+                    $workID=mysql_result($result1,$j,"id")
+                    ?>
+            
                 <table>
                     <tr>
                         <td>
-                            <font face="Arial, Helvetica, sans-serif"><?php echo $f1; ?></font>
+                            
+                            <script>
+                            function basicPopup(url) {
+                                popupWindow = window.open
+                                (url,'popUpWindow','height=350,width=650,left=100,\n\
+                                top=100,resizable=yes,scrollbars=yes,toolbar=yes,\n\
+                                menubar=no,location=no,directories=no, status=yes');
+                                }
+                            </script>
+                            <a href="prevOrderStatus.php?id=<?php echo "$id";?>&order=<?php echo "$workID";?>" 
+                               onclick="basicPopup(this.href);return false">
+                                <font face="Arial, Helvetica, sans-serif"><?php echo $f1; ?></font>
+                            </a> 
                         </td>
                         <td>
                             <font face="Arial, Helvetica, sans-serif"><?php echo $f2; ?></font>
                         </td>
                     </tr>
                 </table>
-                <?php $j++;} ?>
-            </div>
+            <?php $j++;}?>
+           </div>
         </div>
         <div id="footer">Work Order Senior Project 2014</div>
     </body>
