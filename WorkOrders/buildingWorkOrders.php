@@ -63,7 +63,7 @@ $i=0;
         $username="root"; 
         $password="lininG"; 
         $database="SENIOR_PROJECT";
-        $buildingName=$_GET['name'];
+        $buildingName=$_GET['buildingName'];
 
         mysql_connect("localhost",$username,$password); 
         @mysql_select_db($database) or die( "Unable to select database"); 
@@ -109,7 +109,7 @@ $i=0;
                     <tr>
                         <td>
                             <font face="Arial, Helvetica, sans-serif"><?php echo $date;?></font>
-                            <?php echo ":    ";?>
+                            <?php echo ": ";?>
                         </td>
                         <td>
                             <script>
