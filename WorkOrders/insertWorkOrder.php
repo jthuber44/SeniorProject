@@ -51,5 +51,18 @@
                      </script>         
                 ";            
         }
+        
+        if($admin==2)
+        {
+                     $buildingName=$_POST['buildingName'];
+                     echo"
+                     <form method='post' id='operations' action='operationsUser.php?workOrderBuilding=1&update=1&name=$name&id=$id&buildingName=$buildingName&workOrders=1'>
+                     </form>
+                     <script type='text/javascript'> 
+                     document.getElementById('operations').submit();
+                     </script>         
+                ";
+            
+        }
 ?>
 

@@ -59,7 +59,9 @@
                 width:300px;
                 height:500px;
                 overflow:scroll;
+                
             }
+
         </style>
     </head>
     
@@ -68,6 +70,7 @@
     $password="lininG"; 
     $database="SENIOR_PROJECT"; 
     $workOrders=$_GET['workOrders'];
+    
     
     if($workOrders==1)
     {
@@ -85,8 +88,8 @@
         mysql_close(); 
             
     }
-    else{    
-          
+    if($workOrders==0){    
+         $Update=$_GET['update']; 
         $id=$_POST['id'];
         $name=$_POST['name'];
         
@@ -124,6 +127,10 @@
                       {   
                           include('buildingWorkOrders.php');          
                       }
+                      else
+                      {
+                          echo"Click on a Building";
+                      }
 
                     ?>
                 </div>
@@ -137,7 +144,7 @@
                 <?php $j=0;while ($j < $num2)
                     {$buildingName=mysql_result($result2,$j,"name");
                     ?>
-            
+
                 <table>
                     <tr>
                         <td>

@@ -56,6 +56,9 @@
                 height:500px;
                 overflow:scroll;
                 }
+                
+         #insertOrder.hidden {display:none;}
+          #buttonOrder.hidden {display:block;}
         </style>
 
 <?php
@@ -96,6 +99,7 @@ $i=0;
                      }
                      else
                      {
+                         echo"<h1><b>$buildingName</h1></b>";
                         while ($j < $num5)
                         {
                             
@@ -128,5 +132,40 @@ $i=0;
                     </tr>
                 </table>
                      <?php $j++;}}?>
+            <script>
+                function toggle_visibility(id) {
+                    var e = document.getElementById(id);
+                       e.style.display = 'block';
+                }
+                function toggle_visibilitybutton(id) {
+                    var e = document.getElementById(id);
+                       e.style.display = 'none';
+                }
+            </script>
+            
+            <div id="insertOrder" class="hidden" style="float: right;">             
+            <form method='post' action='insertWorkOrder.php'>
+                    <input type='number' name='admin' value='2' hidden='true'/>
+                    <input type='number' name='id' value='<?php $id?>' hidden='true'  /><br>
+                    <input type='number' name='Update' value='0' hidden='true'/>
+                    <input type='text' name='name' value='<?php $name?>' hidden='true'/>
+                    <input type='text' name='zone' value='0' hidden='true'/>
+                    <input type='number' name='buildingID' value='<?php $buildingID?>' hidden='true'/>
+                    <input type='text' name='buildingName' value='<?php $buildingName?>' hidden='true'/>
+                    
+                    Room #
+                    <input type='number' name='roomID' />    <br>
+                    Floor #
+                    <input type='number' name='floorID' />    <br> 
+                    Title
+                    <input type='text' name='title' />    <br>
+                    Description
+                    <input type='text' name='description' />    <br> 
+                    <input type= 'submit' value='Insert New WorkOrder'> </form>          
+            </div>
+            <div style="float: right;">
+            <input type='button'  id="buttonOrder" class="hidden" value="Insert WorkOrder" onclick="toggle_visibility('insertOrder');toggle_visibilitybutton('buttonOrder')">
+        
+            </div>
         </div>
         </div>
