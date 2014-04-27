@@ -158,6 +158,12 @@
                  }
             
             ?>
+            <script>
+                function toggle_visibility(id) {
+                    var e = document.getElementById(id);
+                       e.style.display = 'block';
+                }
+             </script>
             <b>Select Floor:</b>
 
                  <input type="text" value="<?php echo "$buildingID"?>" name="buildingID" hidden="true">
@@ -175,21 +181,10 @@
                       } 
                       ?> 
                  </select>
-                 <button type="button" value="<?php echo"$floorid"?>">Select Floor</button>
+                 <button id="floorbutton" type="button" value="<?php echo"$floorid"?>" onClick="toggle_visibility(roominfo)">Select Floor</button>
                  
-                 <script>
-                  // var button = document.getElementById('button'); // Assumes element with id='button'
 
-                    //button.onclick = function() {
-                      //  var div = document.getElementById('newpost');
-                       // if (div.style.display !== 'none') {
-                        //    div.style.display = 'none';
-                       // }
-                       // else {
-                        //    div.style.display = 'block';
-                        //}
-                   // };
-                 </script>
+                 <div id="roominfo"style="display:none">
                  <br>
                  <b>Select Room:</b>
                  <select name="roomID">
@@ -202,7 +197,8 @@
                       } 
                       ?> 
                  </select>
-            <button type="button" value="<?php echo"$roomid"?>">Select Room</button>
+            <button id="roombutton" type="button" value="<?php echo"$roomid"?>" >Select Room</button>
+                 </div>
                  
         </div>
                 <div id="floor" height="200px">
