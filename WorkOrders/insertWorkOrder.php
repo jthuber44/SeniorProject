@@ -54,6 +54,8 @@
         
         if($admin==2)
         {
+                     $name=$name;
+                     $id=$id;
                      $buildingName=$_POST['buildingName'];
                      echo"
                      <form method='post' id='operations' action='operationsUser.php?workOrderBuilding=1&update=1&name=$name&id=$id&buildingName=$buildingName&workOrders=1'>

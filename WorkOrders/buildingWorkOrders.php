@@ -143,7 +143,8 @@ $i=0;
                 }
             </script>
             
-            <div id="insertOrder" class="hidden" style="float: right;">             
+            <div id="insertOrder" class="hidden" style="float: right;">   
+                <?php echo"
             <form method='post' action='insertWorkOrder.php'>
                     <input type='number' name='admin' value='2' hidden='true'/>
                     <input type='number' name='id' value='<?php $id?>' hidden='true'  /><br>
@@ -161,7 +162,8 @@ $i=0;
                     <input type='text' name='title' />    <br>
                     Description
                     <input type='text' name='description' />    <br> 
-                    <input type= 'submit' value='Insert New WorkOrder'> </form>          
+                    <input type= 'submit' value='Insert New WorkOrder'> </form>  ";
+                    ?>
             </div>
             <div style="float: right;">
             <input type='button'  id="buttonOrder" class="hidden" value="Insert WorkOrder" onclick="toggle_visibility('insertOrder');toggle_visibilitybutton('buttonOrder')">
