@@ -144,15 +144,19 @@ $i=0;
             </script>
             
             <div id="insertOrder" class="hidden" style="float: right;">   
-                <?php echo"
+                <?php 
+                $id=$id;
+                $name=$name;
+                echo"
+                    
             <form method='post' action='insertWorkOrder.php'>
                     <input type='number' name='admin' value='2' hidden='true'/>
-                    <input type='number' name='id' value='<?php $id?>' hidden='true'  /><br>
+                    <input type='number' name='id' value='$id' hidden='true'  /><br>
                     <input type='number' name='Update' value='0' hidden='true'/>
-                    <input type='text' name='name' value='<?php $name?>' hidden='true'/>
+                    <input type='text' name='name' value=' $name' hidden='true'/>
                     <input type='text' name='zone' value='0' hidden='true'/>
-                    <input type='number' name='buildingID' value='<?php $buildingID?>' hidden='true'/>
-                    <input type='text' name='buildingName' value='<?php $buildingName?>' hidden='true'/>
+                    <input type='number' name='buildingID' value='$buildingID' hidden='true'/>
+                    <input type='text' name='buildingName' value='$buildingName' hidden='true'/>
                     
                     Room #
                     <input type='number' name='roomID' />    <br>
