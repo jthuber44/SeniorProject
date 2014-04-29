@@ -37,6 +37,16 @@
                 margin-left: -100%;
                 background: #EAEAEA;
             }
+            
+            #prevOrders{
+                float: left;
+                background-color:#EAEAEA;
+                width:300px;
+                height:500px;
+                overflow:scroll;
+                
+            }
+            
 
             #footer{
                 clear: left;
@@ -53,14 +63,7 @@
                 color: #FFFF80;
             }
             
-            #prevOrders{
-                float: left;
-                background-color:#EAEAEA;
-                width:300px;
-                height:500px;
-                overflow:scroll;
-                
-            }
+            
 
         </style>
     </head>

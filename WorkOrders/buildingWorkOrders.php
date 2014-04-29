@@ -25,6 +25,13 @@
             #contentcolumn{
                 margin-left: 150px;
             }
+            
+            #viewOrders{
+                float: left;
+                width:1065px;
+                height:525px;
+                overflow:scroll;
+                }
 
             #leftcolumn{
                 float: left;
@@ -56,6 +63,8 @@
                 height:500px;
                 overflow:scroll;
                 }
+                
+            
                 
          #insertOrder.hidden {display:none;}
           #buttonOrder.hidden {display:block;}
@@ -92,6 +101,7 @@ $i=0;
         
         <div id="contentwrapper">
         <div id="contentcolumn">
+            <div id ="viewOrders">
                      <?php $j=0;
                      if($num5==0)
                      {
@@ -109,7 +119,7 @@ $i=0;
                             $date=mysql_result($result5,$j,"dateTime");
                     ?>
             
-                <table>
+                <table style="float: bottom;">
                     <tr>
                         <td>
                             <font face="Arial, Helvetica, sans-serif"><?php echo $date;?></font>
@@ -143,35 +153,39 @@ $i=0;
                 }
             </script>
             
-            <div id="insertOrder" class="hidden" style="float: right;">   
-                <?php 
-                $id=$id;
-                $name=$name;
-                echo"
-                    
-            <form method='post' action='insertWorkOrder.php'>
-                    <input type='number' name='admin' value='2' hidden='true'/>
-                    <input type='number' name='id' value='$id' hidden='true'  /><br>
-                    <input type='number' name='Update' value='0' hidden='true'/>
-                    <input type='text' name='name' value=' $name' hidden='true'/>
-                    <input type='text' name='zone' value='0' hidden='true'/>
-                    <input type='number' name='buildingID' value='$buildingID' hidden='true'/>
-                    <input type='text' name='buildingName' value='$buildingName' hidden='true'/>
-                    
-                    Room #
-                    <input type='number' name='roomID' />    <br>
-                    Floor #
-                    <input type='number' name='floorID' />    <br> 
-                    Title
-                    <input type='text' name='title' />    <br>
-                    Description
-                    <input type='text' name='description' />    <br> 
-                    <input type= 'submit' value='Insert New WorkOrder'> </form>  ";
-                    ?>
-            </div>
-            <div style="float: right;">
+            <table>
+                <tr>
+                    <div id="insertOrder" class="hidden" style="float: bottom;">   
+                            <?php 
+                            $id=$id;
+                            $name=$name;
+                            echo"
+                                <form method='post' action='insertWorkOrder.php'>
+                                <input type='number' name='admin' value='2' hidden='true'/>
+                                <input type='number' name='id' value='$id' hidden='true'  /><br>
+                                <input type='number' name='Update' value='0' hidden='true'/>
+                                <input type='text' name='name' value=' $name' hidden='true'/>
+                                <input type='text' name='zone' value='0' hidden='true'/>
+                                <input type='number' name='buildingID' value='$buildingID' hidden='true'/>
+                                <input type='text' name='buildingName' value='$buildingName' hidden='true'/>
+
+                                Room #
+                                <input type='number' name='roomID' />    <br>
+                                Floor #
+                                <input type='number' name='floorID' />    <br> 
+                                Title
+                                <input type='text' name='title' />    <br>
+                                Description
+                                <input type='text' name='description' />    <br> 
+                                <input type= 'submit' value='Insert New WorkOrder'> </form>  ";
+                                ?>
+                        </div>
+                </tr>
+            </table>
+            <div style="float: bottom;">
             <input type='button'  id="buttonOrder" class="hidden" value="Insert WorkOrder" onclick="toggle_visibility('insertOrder');toggle_visibilitybutton('buttonOrder')">
         
+            </div>
             </div>
         </div>
         </div>
