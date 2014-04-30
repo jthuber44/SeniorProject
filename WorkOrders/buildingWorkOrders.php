@@ -63,11 +63,9 @@
                 height:500px;
                 overflow:scroll;
                 }
-                
+            #insertOrder.hidden {display:none;}
             
-                
-         #insertOrder.hidden {display:none;}
-          #buttonOrder.hidden {display:block;}
+            #buttonOrder.hidden {display:block;}
         </style>
 
 <?php
@@ -101,91 +99,93 @@ $i=0;
         
         <div id="contentwrapper">
         <div id="contentcolumn">
-            <div id ="viewOrders">
+            <div id="viewOrders">
+                <table width="1065">
+                    <tr height="175" valign="top">
+                        <td width="800">
+                            <?php echo"<h1><b>$buildingName</h1></b>";?>
+                        </td>
+                        <td>
+                            <div>
+                                <input type='button'  id="buttonOrder" class="hidden" value="Insert WorkOrder" onclick="toggle_visibility('insertOrder');toggle_visibilitybutton('buttonOrder')">
+                            </div>
+                            <div id="insertOrder" class="hidden">
+                                <?php 
+                                $id=$id;
+                                $name=$name;
+                                echo"
+                                    <form method='post' action='insertWorkOrder.php'>
+                                   <input type='number' name='admin' value='2' hidden='true'/>
+                                   <input type='number' name='id' value='$id' hidden='true'  /><br>
+                                   <input type='number' name='Update' value='0' hidden='true'/>
+                                   <input type='text' name='name' value=' $name' hidden='true'/>
+                                   <input type='text' name='zone' value='0' hidden='true'/>
+                                   <input type='number' name='buildingID' value='$buildingID' hidden='true'/>
+                                   <input type='text' name='buildingName' value='$buildingName' hidden='true'/>
+
+                                   Room #
+                                   <input type='number' name='roomID' />    <br>
+                                   Floor #
+                                   <input type='number' name='floorID' />    <br> 
+                                   Title
+                                   <input type='text' name='title' />    <br>
+                                   Description
+                                   <input type='text' name='description' />    <br> 
+                                   <input type= 'submit' value='Insert New WorkOrder'> </form>  ";
+                                   ?>
+                               <script>
+                                   function toggle_visibility(id) {
+                                       var e = document.getElementById(id);
+                                          e.style.display = 'block';
+                                   }
+                                   function toggle_visibilitybutton(id) {
+                                       var e = document.getElementById(id);
+                                          e.style.display = 'none';
+                                   }
+                               </script>
+                           </div>
+                        </td>
+                    </tr>
+                </table>
                      <?php $j=0;
                      if($num5==0)
                      {
-                         echo"There are no work orders currently in $buildingName";
+                         echo"There are no work orders in the selected building";
                      }
                      else
                      {
-                         echo"<h1><b>$buildingName</h1></b>";
                         while ($j < $num5)
                         {
-                            
                             $operationsWorkOrderID=mysql_result($result5,$j,"id");
                             $workOrderTitle=mysql_result($result5,$j,"title");
                             $workID=mysql_result($result5,$j,"userID");
                             $date=mysql_result($result5,$j,"dateTime");
-                    ?>
-            
-                <table style="float: bottom;">
-                    <tr>
-                        <td>
-                            <font face="Arial, Helvetica, sans-serif"><?php echo $date;?></font>
-                            <?php echo ": ";?>
-                        </td>
-                        <td>
-                            <script>
-                            function basicPopup(url) {
-                                popupWindow = window.open
-                                (url,'popUpWindow','height=350,width=650,left=100,\n\
-                                top=100,resizable=yes,scrollbars=yes,toolbar=yes,\n\
-                                menubar=no,location=no,directories=no, status=yes');
-                                }
-                            </script>
-                            <a href="prevOrderStatus.php?id=<?php echo "$workID";?>&order=<?php echo "$operationsWorkOrderID";?>&userStatus=1>" 
-                               onclick="basicPopup(this.href);return false;">
-                            <font face="Arial, Helvetica, sans-serif"><?php echo $workOrderTitle; ?></font>
-                            </a> 
-                        </td>
-                    </tr>
-                </table>
-                     <?php $j++;}}?>
-            <script>
-                function toggle_visibility(id) {
-                    var e = document.getElementById(id);
-                       e.style.display = 'block';
-                }
-                function toggle_visibilitybutton(id) {
-                    var e = document.getElementById(id);
-                       e.style.display = 'none';
-                }
-            </script>
-            
-            <table>
-                <tr>
-                    <div id="insertOrder" class="hidden" style="float: bottom;">   
-                            <?php 
-                            $id=$id;
-                            $name=$name;
-                            echo"
-                                <form method='post' action='insertWorkOrder.php'>
-                                <input type='number' name='admin' value='2' hidden='true'/>
-                                <input type='number' name='id' value='$id' hidden='true'  /><br>
-                                <input type='number' name='Update' value='0' hidden='true'/>
-                                <input type='text' name='name' value=' $name' hidden='true'/>
-                                <input type='text' name='zone' value='0' hidden='true'/>
-                                <input type='number' name='buildingID' value='$buildingID' hidden='true'/>
-                                <input type='text' name='buildingName' value='$buildingName' hidden='true'/>
-
-                                Room #
-                                <input type='number' name='roomID' />    <br>
-                                Floor #
-                                <input type='number' name='floorID' />    <br> 
-                                Title
-                                <input type='text' name='title' />    <br>
-                                Description
-                                <input type='text' name='description' />    <br> 
-                                <input type= 'submit' value='Insert New WorkOrder'> </form>  ";
-                                ?>
-                        </div>
-                </tr>
-            </table>
-            <div style="float: bottom;">
-            <input type='button'  id="buttonOrder" class="hidden" value="Insert WorkOrder" onclick="toggle_visibility('insertOrder');toggle_visibilitybutton('buttonOrder')">
-        
-            </div>
+                            ?>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <font face="Arial, Helvetica, sans-serif"><?php echo $date;?></font>
+                                        <?php echo ": ";?>
+                                    </td>
+                                    <td>
+                                        <script>
+                                        function basicPopup(url) {
+                                            popupWindow = window.open
+                                            (url,'popUpWindow','height=350,width=650,left=100,\n\
+                                            top=100,resizable=yes,scrollbars=yes,toolbar=yes,\n\
+                                            menubar=no,location=no,directories=no, status=yes');
+                                            }
+                                        </script>
+                                        <a href="prevOrderStatus.php?id=<?php echo "$workID";?>&order=<?php echo "$operationsWorkOrderID";?>&userStatus=1>" 
+                                           onclick="basicPopup(this.href);return false;">
+                                        <font face="Arial, Helvetica, sans-serif"><?php echo $workOrderTitle; ?></font>
+                                        </a> 
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <?php $j++;}
+                    }?>
             </div>
         </div>
         </div>
