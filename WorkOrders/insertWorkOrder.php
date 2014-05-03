@@ -66,5 +66,22 @@
                 ";
             
         }
+        if($admin==4)
+        {
+            $admin=1;
+                echo" 
+                     <form method='post' id='admin' action='adminUser.php'>
+                     <input type='number' name='id' value='$id' hidden='false'/>
+                     <input type='text' value='0' name='Update' hidden='false'/>
+                     <input type='text' name='name' value='$name' hidden='false'/>
+                     <input type='number' name='buildingID' value='$buildingID' hidden='false'/>
+                     <input type='number' name='roomID' value='$roomID' hidden='false'/>
+                     <input type='number' name='admin' value='$admin' hidden='false'/>
+                     </form>
+                     <script type='text/javascript'> 
+                     document.getElementById('admin').submit();
+                     </script>         
+                ";            
+        }
 ?>
 

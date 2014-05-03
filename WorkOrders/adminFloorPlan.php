@@ -1,135 +1,76 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Benedictine College Work Orders: Admin User</title>
-        <style type="text/css">
-            body{
-                margin:0;
-                padding:0;
-                line-height: 1.5em;
-            }
-            b{font-size: 110%;}
-            em{color: red;}
-            
-            #topsection{
-                background: #EAEAEA;
-                height: 90px; 
-            }
-
-            #topsection h1{
-                margin: 0;
-                padding-top: 15px;
-            }
-
-            #contentwrapper{
-                float: left;
-                width: 100%;
-            }
-
-            #contentcolumn{
-                margin-left: 200px;
-            }
-
-            #leftcolumn{
-                float: left;
-                width: 300px;
-                height: 800px;
-                margin-left: -100%;
-                background: #EAEAEA;
-            }
-
-            #footer{
-                clear: left;
-                width: 100%;
-                background: black;
-                color: #FFF;
-                text-align: center;
-                padding: 4px 0;
-                position: absolute;
-                bottom: 0px;
-            }
-
-            #footer a{
-                color: #FFFF80;
-            }
-            
-            #prevOrders{
-                float: left;
-                background-color:#EAEAEA;
-                width:300px;
-                height:500px;
-                overflow:scroll;
-             }
-        </style>
-    </head>
-    
-     <?php
-        $id=$_POST['id'];
-        $name=$_POST['name'];
+<?php
         $buildingID=$_POST['buildingID'];
-        $roomID=$_POST['roomID'];
+        $id=$_POST['id'];
+        $admin=$_POST['admin'];
         $username="root"; 
         $password="lininG"; 
         $database="SENIOR_PROJECT"; 
-        $i=0;
         
-        mysql_connect("localhost",$username,$password); 
+                mysql_connect("localhost",$username,$password); 
         @mysql_select_db($database) or die( "Unable to select database"); 
-        $query1="SELECT id, title, dateTime FROM WORK_ORDERS Where userID='$id'"; 
-        $result1=mysql_query($query1); 
-        $num=mysql_numrows($result1);
-        
-        $query2="SELECT name FROM BUILDING Where id='$buildingID'"; 
-        $result2=mysql_query($query2);  
-        
-        $buildingName=mysql_result($result2,$i,"name");
-        mysql_close(); 
-        ?>
-    
-    <body>
-        <div id="maincontainer">
-        <div id="topsection">
-            <table style="width:1200px">
-                <tr>
-                  <td><img src="logo.png" alt="Benedictine College"></td>
-                  <td>
-                      <h1><?php echo "$name, $buildingName" ?></h1>
-                  </td>
-                  <td>
-                      <form method="post" action="index.php">
-                          <input type="submit" value="LogOut">
-                    </form>
-                  </td>
-                </tr>
-            </table>
-            <h1></div></div>
-        <div id="contentwrapper">
-        <div id="contentcolumn">
-            
-        </div>
-        </div>
-        <div id="leftcolumn">
-            <<b>Previous Work Orders:</b>
-            </br>
-            <div id="prevOrders">
-                <?php $j=0;while ($j < $num) 
-                    {$f1=mysql_result($result1,$j,"title");
-                    $f2=mysql_result($result1,$j,"dateTime");?>
-                <table>
-                    <tr>
-                        <td>
-                            <font face="Arial, Helvetica, sans-serif"><?php echo $f1; ?></font>
-                        </td>
-                        <td>
-                            <font face="Arial, Helvetica, sans-serif"><?php echo $f2; ?></font>
-                        </td>
-                    </tr>
-                </table>
-                <?php $j++;} ?>
-            </div>
-        </div>
-        <div id="footer">Work Order Senior Project 2014</div>
-    </body>
-</html>
+            $query3="SELECT id, floorID FROM FLOOR Where buildingID='$buildingID'"; 
+            $result3=mysql_query($query3); 
+            $num3=mysql_numrows($result3);
+              mysql_close(); 
+?>
 
 
+<style type="text/css">
+    .imgClass { 
+    background-image: url(floorPlaceholder.jpg);
+    background-position:  0px 0px;
+    background-repeat: no-repeat;
+    background-size:contain;
+    width: 400px;
+    height: 400px;
+    border: 0px;
+    background-color: none;
+    cursor: pointer;
+    outline: 0;
+}
+
+
+.imgClass:active{
+      background-position:  0px -3px;
+}
+      
+    .imgClassFloor { 
+    background-image: url(actualfloorplaceholder.jpg);
+    background-position:  0px 0px;
+    background-repeat: no-repeat;
+    background-size:contain;
+    width: 400px;
+    height: 300px;
+    border: 0px;
+    background-color: none;
+    cursor: pointer;
+    outline: 0;
+}
+
+
+.imgClassFloor:active{
+      background-position:  0px -3px;
+}
+</style>
+
+<?php
+if($admin==4)
+{?>
+             <form method="post" action="studentUser.php">
+                 <input type="text" value="<?php echo "$buildingID"?>" name="buildingID" hidden="true">
+                 <input type="text" value="<?php echo "$roomID"?>" name="roomID" hidden="true">
+                 <input type="text" value="<?php echo "$name"?>" name="name" hidden="true">
+                 <input type="text" value="<?php echo "$id"?>" name="id" hidden="true">
+                 <input type="text" value="1" name="Update" hidden="true">
+                 <input type="text" value="<?php echo "$admin"?>" name="admin" hidden="true">
+                 <input type="text" value="<?php echo "$floorID"?>" name="floorID" hidden="true">
+                    <center>
+                    <table width="400px">
+                        <tr>
+                            <input type="submit" value="1" name="box" class="imgClass" height="400px"/>
+                    </table>
+                    </center>
+                </form>
+
+<?php
+}?>

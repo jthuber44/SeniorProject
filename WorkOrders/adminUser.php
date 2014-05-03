@@ -103,6 +103,26 @@
         $buildingName=mysql_result($result2,$i,"name");
         }
         
+        if($Update==2)
+        {
+            
+            $floorID=$_POST['floorID'];
+            mysql_connect("localhost",$username,$password); 
+            @mysql_select_db($database) or die( "Unable to select database"); 
+            $query1="SELECT id, title, dateTime FROM WORK_ORDERS Where userID='$id'"; 
+            $result1=mysql_query($query1); 
+            $num=mysql_numrows($result1);
+
+            $query2="SELECT name FROM BUILDING Where id='$buildingID'"; 
+            $result2=mysql_query($query2); 
+
+
+
+            mysql_close(); 
+
+            $buildingName=mysql_result($result2,$i,"name");
+        }
+        
         else{
         
             mysql_connect("localhost",$username,$password); 
@@ -115,13 +135,6 @@
             $result2=mysql_query($query2); 
 
 
-            $query3="SELECT id, floorID FROM FLOOR Where buildingID='$buildingID'"; 
-            $result3=mysql_query($query3); 
-            $num3=mysql_numrows($result3);
-
-            $query4="SELECT id FROM ROOM Where buildingID='$buildingID'"; 
-            $result4=mysql_query($query4); 
-            $num4=mysql_numrows($result4);
 
             mysql_close(); 
 
@@ -150,6 +163,7 @@
             <h1></div></div>
         <div id="contentwrapper">
         <div id="contentcolumn">
+            
             <?php
                  if($Update==1)
                  {
@@ -158,55 +172,19 @@
                  }
             
             ?>
-            <script>
-                function toggle_visibility(id) {
-                    var e = document.getElementById(id);
-                       e.style.display = 'block';
-                }
-             </script>
-            <b>Select Floor:</b>
 
-                 <input type="text" value="<?php echo "$buildingID"?>" name="buildingID" hidden="true">
-                 <input type="text" value="<?php echo "$name"?>" name="name" hidden="true">
-                 <input type="text" value="<?php echo "$id"?>" name="id" hidden="true">
-                 <input type="text" value="1" name="admin" hidden="true">
-                 <select name="floorID">
-                     
-                     <?php
-                     $k=0;
-                     while ($k < $num3) {
-                         $floorid=mysql_result($result3,$k,"floorID"); 
-                         echo "<option value='$floorid'>$floorid"; 
-                         $k++;
-                      } 
-                      ?> 
-                 </select>
-                 <button id="floorbutton" type="button" value="<?php echo"$floorid"?>" onClick="toggle_visibility(roominfo)">Select Floor</button>
-                 
-
-                 <div id="roominfo"style="display:none">
-                 <br>
-                 <b>Select Room:</b>
-                 <select name="roomID">
-                     <?php
-                     $m=0;
-                     while ($m < $num4) {
-                         $roomid=mysql_result($result4,$m,"id"); 
-                         echo "<option value='$roomid'>$roomid"; 
-                         $m++;
-                      } 
-                      ?> 
-                 </select>
-            <button id="roombutton" type="button" value="<?php echo"$roomid"?>" >Select Room</button>
-                 </div>
                  
         </div>
-                <div id="floor" height="200px">
+                <div id="floor" height="400px" style="left:200px">
                 <?php
                  if($Update==0){
                  global $student;
                  $student = '0';
                  include('floorPlans.php'); }?>
+                    
+                 <?php
+                 if($Update==2){                
+                 include('adminFloorPlan.php'); }?>
                 </div>
         </div>
         <div id="leftcolumn">
