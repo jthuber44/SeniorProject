@@ -6,7 +6,22 @@
             $password="lininG"; 
             $database="SENIOR_PROJECT"; 
             $i=0;
-
+            if($statusDescription=='Completed'||$statusDescription=='completed'||$statusDescription=='Complete'||$statusDescription=='complete')
+            {
+                mysql_connect("localhost",$username,$password); 
+                @mysql_select_db($database) or die( "Unable to select database"); 
+                $query2="UPDATE WORK_ORDERS set statusDescription='$statusDescription', isActive=0 where userID=$userID and id=$orderID"; 
+                $result2=mysql_query($query2); 
+                mysql_close(); 
+                
+                mysql_connect("localhost",$username,$password); 
+                @mysql_select_db($database) or die( "Unable to select database"); 
+                $query3="Select id from WORK_ORDERS where statusDescription='$statusDescription'and userID=$userID and id=$orderID"; 
+                $result3=mysql_query($query3); 
+                $num3=mysql_numrows($result3); 
+                mysql_close(); 
+            }
+            else{
                 
                 mysql_connect("localhost",$username,$password); 
                 @mysql_select_db($database) or die( "Unable to select database"); 
@@ -20,6 +35,7 @@
                 $result3=mysql_query($query3); 
                 $num3=mysql_numrows($result3); 
                 mysql_close(); 
+            }
 
                 if($num3==1){
                 echo"

@@ -66,12 +66,13 @@ if($admin==0)
                  <input type="text" value="<?php echo "$name"?>" name="name" hidden="true">
                  <input type="text" value="<?php echo "$id"?>" name="id" hidden="true">
                  <input type="text" value="1" name="Update" hidden="true">
+                 <input type="text" value="1" name="box" hidden="true">
                  <input type="text" value="<?php echo "$admin"?>" name="admin" hidden="true">
                  <input type="text" value="0" name="floorID" hidden="true">
                     <center>
                     <table width="400px">
                         <tr>
-                            <input type="submit" value="1" name="box" class="imgClass" height="400px"/>
+                            <input type="submit"  class="imgClass" height="400px"/>
                     </table>
                     </center>
                 </form>
@@ -96,7 +97,7 @@ if($admin==0)
 <?php
 if($admin==1)
 {?>
-    
+     <div id="hiddme" style="display:block">
              <form method="post" action="adminUser.php">
                  <div id="floor" style="float:right; display:block">
                      
@@ -112,7 +113,8 @@ if($admin==1)
                       } 
                       ?> 
                  </select>
-                 <input type='button' value="Room" onclick="toggle_visibility('roominfo');">
+                 <br>
+                 <input type='button' value="Specific Room" onclick="toggle_visibility('roominfo');toggle_visibilitybutton('hiddme');">
 
                  </div>
                  <input type="text" value="<?php echo "$buildingID"?>" name="buildingID" hidden="true">
@@ -120,15 +122,16 @@ if($admin==1)
                  <input type="text" value="<?php echo "$name"?>" name="name" hidden="true">
                  <input type="text" value="<?php echo "$id"?>" name="id" hidden="true">
                  <input type="text" value="1" name="Update" hidden="true">
+                 <input type="text" value="1" name="box" hidden="true">
                  <input type="text" value="<?php echo "$admin"?>" name="admin" hidden="true">
                     <center>
                     <table width="400px">
                         <tr>
-                            <input type="submit" value="1" name="box" class="imgClassFloor" height="400px"/>
+                            <input type="submit" class="imgClassFloor" height="400px"/>
                     </table>
                     </center>
                 </form>
-
+     </div>
 <form method="post" action="adminUser.php">
 <div id="roominfo"style="float:right; display:none">
                  <br>
@@ -161,7 +164,10 @@ if($admin==1)
                  <input type="text" value="<?php echo "$name"?>" name="name" hidden="true">
                  <input type="text" value="<?php echo "$id"?>" name="id" hidden="true">
                  <input type="text" value="4" name="admin" hidden="true">
+                 <br>
             <button id="roombutton" type="submit"  >Select Room</button>
+            <br>
+            <input type='button' value="Cancel" onclick="toggle_visibility('hiddme');toggle_visibilitybutton('roominfo');">
                  </div>
 </form>
 

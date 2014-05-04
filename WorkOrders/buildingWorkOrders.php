@@ -89,7 +89,7 @@ $i=0;
         mysql_connect("localhost",$username,$password); 
         @mysql_select_db($database) or die( "Unable to select database"); 
         $query5="SELECT id, title, userID, dateTime, description, statusDescription 
-            FROM WORK_ORDERS Where buildingID='$buildingID'"; 
+            FROM WORK_ORDERS Where buildingID='$buildingID' and isActive=1"; 
         $result5=mysql_query($query5); 
         $num5=mysql_numrows($result5); 
         mysql_close(); 

@@ -74,7 +74,7 @@
         
         mysql_connect("localhost",$username,$password); 
         @mysql_select_db($database) or die( "Unable to select database"); 
-        $query="SELECT id, title, dateTime, description, statusDescription 
+        $query="SELECT id, title, dateTime, description, statusDescription, floorID, roomID
             FROM WORK_ORDERS Where userID='$workID' and id='$order'"; 
         $result=mysql_query($query); 
         $num=mysql_numrows($result); 
@@ -85,6 +85,8 @@
             $dateTime=mysql_result($result,$j,"dateTime");
             $description=mysql_result($result,$j,"description");
             $status=mysql_result($result,$j,"statusDescription");
+            $sfloorID=mysql_result($result,$j,"floorID");
+            $sroomID=mysql_result($result,$j,"roomID");
 ?>
     <body>
         <div id="maincontainer">
@@ -151,8 +153,28 @@
                             <?php
                             }
                             ?>
-                        </td>
+                        </td>                     
                     </tr>
+                    <tr>
+                        <td>
+                            <b>
+                            <?php echo "Floor:"; ?>
+                            </b>
+                        </td>
+                        <td>
+                            <font face="Arial, Helvetica, sans-serif"><?php echo $sfloorID; ?></font>
+                        </td>
+                    </tr>                    
+                    <tr>
+                        <td>
+                            <b>
+                            <?php echo "Room:"; ?>
+                            </b>
+                        </td>
+                        <td>
+                            <font face="Arial, Helvetica, sans-serif"><?php echo $sroomID; ?></font>
+                        </td>
+                    </tr>  
                     </table>
                     <?php $j++;}?>
             </div>

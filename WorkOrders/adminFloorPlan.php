@@ -62,12 +62,13 @@ if($admin==4)
                  <input type="text" value="<?php echo "$name"?>" name="name" hidden="true">
                  <input type="text" value="<?php echo "$id"?>" name="id" hidden="true">
                  <input type="text" value="1" name="Update" hidden="true">
+                 <input type="text" value="1" name="box" hidden="true">
                  <input type="text" value="<?php echo "$admin"?>" name="admin" hidden="true">
                  <input type="text" value="<?php echo "$floorID"?>" name="floorID" hidden="true">
                     <center>
                     <table width="400px">
                         <tr>
-                            <input type="submit" value="1" name="box" class="imgClass" height="400px"/>
+                            <input type="submit" class="imgClass" height="400px"/>
                     </table>
                     </center>
                 </form>
