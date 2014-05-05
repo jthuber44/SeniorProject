@@ -126,7 +126,7 @@ if($admin==1)
                       ?> 
                  </select>
                  <br>
-                 <input type='button' value="Select Floor" 
+                 <input type='button' value="Click for Specific Room" 
                         onclick="toggle_visibility('roominfo');toggle_visibilitybutton('hiddme');">
 
                  </div>
@@ -152,8 +152,7 @@ if($admin==1)
                       ?> 
                  </select>
                  <br>
-                 <input type='button' value="Select Floor" 
-                        onclick="toggle_visibility('roominfo');toggle_visibilitybutton('hiddme');">
+                
 
                  </div>
                  <b>Select Room:</b>
