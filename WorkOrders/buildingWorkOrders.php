@@ -100,13 +100,12 @@ $i=0;
         <div id="contentwrapper">
         <div id="contentcolumn">
             <div id="viewOrders">
-                <table width="1065">
-                    <tr height="175" valign="top">
-                        <td width="800">
+                <table>
+                    <tr>
                             <?php echo"<h1><b>$buildingName</h1></b>";?>
-                        </td>
-                        <td>
-                            <div>
+                    </tr>
+                    <tr>
+                        <div>
                                 <input type='button'  id="buttonOrder" class="hidden" value="Insert WorkOrder" onclick="toggle_visibility('insertOrder');toggle_visibilitybutton('buttonOrder')">
                             </div>
                             <div id="insertOrder" class="hidden">
@@ -144,7 +143,6 @@ $i=0;
                                    }
                                </script>
                            </div>
-                        </td>
                     </tr>
                 </table>
                      <?php $j=0;

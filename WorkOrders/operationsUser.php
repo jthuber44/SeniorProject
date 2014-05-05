@@ -151,7 +151,9 @@
                 <table>
                     <tr>
                         <td>
-                            <a href="operationsUser.php?workOrderBuilding=<?php echo "1";?>&update=1&name=<?php echo "$name";?>&id=<?php echo "$id";?>&buildingName=<?php echo "$buildingName";?>&workOrders=<?php echo "1";?>" >
+                            <a href="operationsUser.php?workOrderBuilding=<?php echo "1";?>
+                               &update=1&name=<?php echo "$name";?>&id=<?php echo "$id";?>
+                               &buildingName=<?php echo "$buildingName";?>&workOrders=<?php echo "1";?>" >
                                 <font face="Arial, Helvetica, sans-serif"><?php echo $buildingName; ?></font>
                             </a> 
                         </td>

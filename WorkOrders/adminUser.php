@@ -173,7 +173,7 @@
             
             ?>
 
-                 
+        </br>      
         </div>
                 <div id="floor" height="400px" style="left:200px">
                 <?php

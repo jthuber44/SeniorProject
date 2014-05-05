@@ -1,24 +1,3 @@
-<?php
-        $buildingID=$_POST['buildingID'];
-        $id=$_POST['id'];
-        $admin=$_POST['admin'];
-        $username="root"; 
-        $password="lininG"; 
-        $database="SENIOR_PROJECT"; 
-        
-                mysql_connect("localhost",$username,$password); 
-        @mysql_select_db($database) or die( "Unable to select database"); 
-            $query3="SELECT id, floorID FROM FLOOR Where buildingID='$buildingID'"; 
-            $result3=mysql_query($query3); 
-            $num3=mysql_numrows($result3);
-            
-              $query4="SELECT id FROM ROOM Where buildingID='$buildingID'"; 
-            $result4=mysql_query($query4); 
-            $num4=mysql_numrows($result4);
-              mysql_close(); 
-?>
-
-
 <style type="text/css">
     .imgClass { 
     background-image: url(floorPlaceholder.jpg);
@@ -56,6 +35,26 @@
       background-position:  0px -3px;
 }
 </style>
+
+<?php
+        $buildingID=$_POST['buildingID'];
+        $id=$_POST['id'];
+        $admin=$_POST['admin'];
+        $username="root"; 
+        $password="lininG"; 
+        $database="SENIOR_PROJECT"; 
+        
+                mysql_connect("localhost",$username,$password); 
+        @mysql_select_db($database) or die( "Unable to select database"); 
+            $query3="SELECT id, floorID FROM FLOOR Where buildingID='$buildingID'"; 
+            $result3=mysql_query($query3); 
+            $num3=mysql_numrows($result3);
+            
+              $query4="SELECT id FROM ROOM Where buildingID='$buildingID'"; 
+            $result4=mysql_query($query4); 
+            $num4=mysql_numrows($result4);
+              mysql_close(); 
+?>
 
 <?php
 if($admin==0)
@@ -97,26 +96,9 @@ if($admin==0)
 <?php
 if($admin==1)
 {?>
-     <div id="hiddme" style="display:block">
+             <div id="hiddme" style="display:block">
              <form method="post" action="adminUser.php">
-                 <div id="floor" style="float:right; display:block">
-                     
-                 <b>Select Floor:</b>
-                 <select name="floorID">
-                     
-                     <?php
-                     $k=0;
-                     while ($k < $num3) {
-                         $floorid=mysql_result($result3,$k,"floorID"); 
-                         echo "<option value='$floorid'>$floorid"; 
-                         $k++;
-                      } 
-                      ?> 
-                 </select>
-                 <br>
-                 <input type='button' value="Specific Room" onclick="toggle_visibility('roominfo');toggle_visibilitybutton('hiddme');">
-
-                 </div>
+                 
                  <input type="text" value="<?php echo "$buildingID"?>" name="buildingID" hidden="true">
                  <input type="text" value="<?php echo "$roomID"?>" name="roomID" hidden="true">
                  <input type="text" value="<?php echo "$name"?>" name="name" hidden="true">
@@ -127,14 +109,10 @@ if($admin==1)
                     <center>
                     <table width="400px">
                         <tr>
-                            <input type="submit" class="imgClassFloor" height="400px"/>
-                    </table>
-                    </center>
-                </form>
-     </div>
-<form method="post" action="adminUser.php">
-<div id="roominfo"style="float:right; display:none">
-                 <br>
+                            <input type="submit" class="imgClassFloor" height="100px"/>
+                        </tr>
+                        <tr>
+                            <div id="floor" display:block">
                  <b>Select Floor:</b>
                  <select name="floorID">
                      
@@ -147,7 +125,37 @@ if($admin==1)
                       } 
                       ?> 
                  </select>
-                 
+                 <br>
+                 <input type='button' value="Select Floor" 
+                        onclick="toggle_visibility('roominfo');toggle_visibilitybutton('hiddme');">
+
+                 </div>
+                        </tr>
+                    </table>
+                    </center>
+                </form>
+     </div>
+<form method="post" action="adminUser.php">
+    <center>
+<div id="roominfo" style="display:none">
+    <div id="floor" display:block">
+                 <b>Select Floor:</b>
+                 <select name="floorID">
+                     
+                     <?php
+                     $k=0;
+                     while ($k < $num3) {
+                         $floorid=mysql_result($result3,$k,"floorID"); 
+                         echo "<option value='$floorid'>$floorid"; 
+                         $k++;
+                      } 
+                      ?> 
+                 </select>
+                 <br>
+                 <input type='button' value="Select Floor" 
+                        onclick="toggle_visibility('roominfo');toggle_visibilitybutton('hiddme');">
+
+                 </div>
                  <b>Select Room:</b>
                  <select name="roomID">
                      <?php
@@ -169,6 +177,7 @@ if($admin==1)
             <br>
             <input type='button' value="Cancel" onclick="toggle_visibility('hiddme');toggle_visibilitybutton('roominfo');">
                  </div>
+    </center>
 </form>
 
 
