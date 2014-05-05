@@ -68,7 +68,7 @@ if($admin==4)
                     <center>
                     <table width="400px">
                         <tr>
-                            <input type="submit" class="imgClass" height="400px"/>
+                            <input type="submit" value=" " class="imgClass" height="400px"/>
                     </table>
                     </center>
                 </form>

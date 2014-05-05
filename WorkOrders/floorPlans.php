@@ -71,7 +71,7 @@ if($admin==0)
                     <center>
                     <table width="400px">
                         <tr>
-                            <input type="submit"  class="imgClass" height="400px"/>
+                            <input type="submit"  value=" " class="imgClass" height="400px"/>
                     </table>
                     </center>
                 </form>
@@ -109,7 +109,7 @@ if($admin==1)
                     <center>
                     <table width="400px">
                         <tr>
-                            <input type="submit" class="imgClassFloor" height="100px"/>
+                            <input type="submit" value=" " class="imgClassFloor" height="100px"/>
                         </tr>
                         <tr>
                             <div id="floor" display:block">
