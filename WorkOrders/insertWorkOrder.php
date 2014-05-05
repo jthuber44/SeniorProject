@@ -15,7 +15,7 @@
         $i=0;
         mysql_connect("localhost",$username,$password); 
         @mysql_select_db($database) or die( "Unable to select database"); 
-        $query="Insert into WORK_ORDERS(title, description, dateTime, userID, buildingID, floorID, roomID, Zone) values('$title', '$description', NOW(), '$id', '$buildingID', '$floorID', '$roomID', '$zone')"; 
+        $query="Insert into WORK_ORDERS(title, description, dateTime, userID, buildingID, floorID, roomID, Zone, isActive) values('$title', '$description', NOW(), '$id', '$buildingID', '$floorID', '$roomID', '$zone', 1)"; 
         $result=mysql_query($query); 
         mysql_close(); 
         
